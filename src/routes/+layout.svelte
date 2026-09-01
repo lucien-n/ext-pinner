@@ -13,7 +13,7 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-<div class="flex h-[400] w-md min-w-md flex-col p-2">
+<div class="flex h-[400] w-md min-w-md flex-col bg-background p-2">
 	<ScrollArea type="scroll" class="h-full p-3">
 		{@render children()}
 	</ScrollArea>
