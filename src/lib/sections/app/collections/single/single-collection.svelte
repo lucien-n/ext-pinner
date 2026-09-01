@@ -15,7 +15,7 @@
 	<div class="flex min-w-0 items-center gap-5" transition:slide>
 		<p
 			class={cn(
-				'min-w-0 flex-1 overflow-hidden text-base text-ellipsis whitespace-nowrap',
+				'ml-1 min-w-0 flex-1 overflow-hidden text-base text-ellipsis whitespace-nowrap',
 				ctx.isAutoload && 'font-semibold'
 			)}
 			title={ctx.data.name}
