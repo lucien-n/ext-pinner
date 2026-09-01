@@ -2,7 +2,7 @@
 	import { cn } from '$lib/shadcn/utils.js';
 	import { buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
-	import ChevronsUpDownIcon from '@lucide/svelte/icons/chevrons-up-down';
+	import CollapseIcon from '@lucide/svelte/icons/chevrons-up-down';
 	import { slide } from 'svelte/transition';
 	import SingleCollectionContent from './content/single-collection-content.svelte';
 	import { getPinnerCollectionCtx } from './pinner-collection.ctx.svelte.js';
@@ -30,7 +30,7 @@
 				class={buttonVariants({ variant: 'ghost', size: 'sm', class: 'w-9 shrink-0 p-0' })}
 				disabled={!ctx.data.urls.length}
 			>
-				<ChevronsUpDownIcon />
+				<CollapseIcon />
 				<span class="sr-only">Toggle</span>
 			</Collapsible.Trigger>
 		</div>
