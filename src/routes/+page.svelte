@@ -13,7 +13,7 @@
 
 	<Separator />
 
-	<div class="flex flex-col gap-3">
+	<div class="flex flex-col gap-3 px-2">
 		{#each pinner.collections as collection (collection.id)}
 			<PinnerCollectionCtx data={collection}>
 				<SingleCollection />

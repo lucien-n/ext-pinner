@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from '$lib/shadcn/utils.js';
 	import { buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
 	import CollapseIcon from '@lucide/svelte/icons/chevrons-up-down';
@@ -14,10 +13,7 @@
 <Collapsible.Root class="space-y-2">
 	<div class="flex min-w-0 items-center gap-5" transition:slide>
 		<p
-			class={cn(
-				'ml-1 min-w-0 flex-1 overflow-hidden text-base text-ellipsis whitespace-nowrap',
-				ctx.isAutoload && 'font-semibold'
-			)}
+			class="ml-1 min-w-0 flex-1 overflow-hidden text-base text-ellipsis whitespace-nowrap"
 			title={ctx.data.name}
 		>
 			{ctx.data.name}
@@ -27,7 +23,7 @@
 			<SingleCollectionActions />
 
 			<Collapsible.Trigger
-				class={buttonVariants({ variant: 'ghost', size: 'sm', class: 'w-9 shrink-0 p-0' })}
+				class={buttonVariants({ variant: 'ghost', size: 'icon' })}
 				disabled={!ctx.data.urls.length}
 			>
 				<CollapseIcon />

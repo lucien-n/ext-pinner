@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { Button, buttonVariants } from '&/button';
+	import * as ButtonGroup from '&/button-group';
 	import { Checkbox } from '&/checkbox';
 	import { Label } from '&/label';
+	import LoadIcon from '@lucide/svelte/icons/square-arrow-out-up-right';
 	import DeleteIcon from '@lucide/svelte/icons/trash-2';
 	import { getPinnerCollectionCtx } from './pinner-collection.ctx.svelte.js';
 
@@ -27,25 +29,28 @@
 		Cancel
 	</Button>
 {:else}
-	<Label class={buttonVariants({ variant: 'ghost' })}>
-		Autoload
-		<Checkbox checked={ctx.isAutoload} onCheckedChange={(checked) => ctx.setAutoload(checked)} />
-	</Label>
+	<ButtonGroup.Root>
+		<Label class={buttonVariants({ variant: 'ghost' })}>
+			Autoload
+			<Checkbox checked={ctx.isAutoload} onCheckedChange={(checked) => ctx.setAutoload(checked)} />
+		</Label>
 
-	<Button
-		variant="secondary"
-		title="Load collection - replaces currently pinned tabs"
-		onclick={() => ctx.load()}
-	>
-		Load
-	</Button>
+		<Button
+			variant="ghost"
+			title="Load collection - replaces currently pinned tabs"
+			size="icon"
+			onclick={() => ctx.load()}
+		>
+			<LoadIcon />
+		</Button>
 
-	<Button
-		size="icon"
-		variant="destructive"
-		title="Delete collection"
-		onclick={() => (isWaitingForDeleteConfirmation = true)}
-	>
-		<DeleteIcon />
-	</Button>
+		<Button
+			size="icon"
+			variant="ghost"
+			title="Delete collection"
+			onclick={() => (isWaitingForDeleteConfirmation = true)}
+		>
+			<DeleteIcon />
+		</Button>
+	</ButtonGroup.Root>
 {/if}

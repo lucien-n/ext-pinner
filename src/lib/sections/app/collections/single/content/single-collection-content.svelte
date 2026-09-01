@@ -44,7 +44,7 @@
 				variant="link"
 				href={item.url}
 				target="_blank"
-				class="block min-w-0 flex-1 overflow-hidden px-0 text-left text-ellipsis whitespace-nowrap"
+				class="block min-w-0 flex-1 overflow-hidden px-0 text-left font-normal text-ellipsis whitespace-nowrap"
 			>
 				{item.url}
 			</Button>
