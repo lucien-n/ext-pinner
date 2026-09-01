@@ -1,0 +1,18 @@
+{
+	"name": "Pinner",
+	"description": "Saves and loads pinned tabs",
+	"version": "1.0",
+	"manifest_version": 3,
+	"action": {
+		"default_popup": "index.html",
+		"default_icon": "icon.png"
+	},
+	"permissions": [
+		"storage",
+		"tabs"
+	],
+	"background": {
+		"service_worker": "background.js",
+		"type": "module"
+	}
+}
