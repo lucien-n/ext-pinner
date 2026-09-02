@@ -1,4 +1,4 @@
-import { replacePinnedUrls } from '$lib/helpers.js';
+import { replacePinnedTabs } from '$lib/helpers.js';
 import { loadPinnerData } from '$lib/pinner-storage.js';
 
 chrome.runtime.onStartup.addListener(async () => {
@@ -7,5 +7,5 @@ chrome.runtime.onStartup.addListener(async () => {
 	const autoloadedCollection = data?.collections.find((c) => c.id === data.autoloadId);
 	if (!autoloadedCollection) return;
 
-	await replacePinnedUrls(autoloadedCollection.urls);
+	await replacePinnedTabs(autoloadedCollection.tabs);
 });

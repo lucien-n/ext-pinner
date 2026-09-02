@@ -7,6 +7,8 @@
 	import { urlSchema } from '../../schema.js';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
 
+	// todo: toggle auto mute button ?
+
 	const ctx = getPinnerCollectionCtx();
 
 	let newUrlInputRef = $state<HTMLInputElement | null>(null);
@@ -17,7 +19,7 @@
 
 	function handleAddUrl() {
 		if (isAddShown && isNewUrlValid) {
-			ctx.add(newUrl);
+			ctx.add({ url: newUrl, isMuted: false });
 		} else {
 			newUrlInputRef?.focus();
 		}

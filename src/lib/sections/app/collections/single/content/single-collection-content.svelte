@@ -4,31 +4,35 @@
 	import { Label } from '&/label';
 
 	import icons from '$lib/icons';
+	import * as ButtonGroup from '&/button-group';
 	import { dragHandle, dragHandleZone, type DndEvent } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
+	import type { TabData } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
-	import AddUrlAction from './add-url-action.svelte';
+	import AddManualTabAction from './add-manual-tab-action.svelte';
+
+	type TypeDataWithDndId = TabData & { id: string };
 
 	const ctx = getPinnerCollectionCtx();
 
 	let shouldShowFullUrls = $state(false);
 
-	let items = $derived(ctx.data.urls.map((url) => ({ id: url, url })));
+	let items = $derived(ctx.data.tabs.map((tab) => ({ ...tab, id: tab.url })));
 
-	function handleDndConsider(e: CustomEvent<DndEvent<{ id: string; url: string }>>) {
+	function handleDndConsider(e: CustomEvent<DndEvent<TypeDataWithDndId>>) {
 		items = e.detail.items;
 	}
 
-	function handleDndFinalize(e: CustomEvent<DndEvent<{ id: string; url: string }>>) {
+	function handleDndFinalize(e: CustomEvent<DndEvent<TypeDataWithDndId>>) {
 		items = e.detail.items;
-		ctx.reorder(items.map((i) => i.url));
+		ctx.reorder(items);
 	}
 </script>
 
 <div class="flex flex-col gap-1 px-2">
 	<div class="flex justify-between">
 		<p class="text-sm font-medium">
-			{ctx.data.urls.length} tab{ctx.data.urls.length > 1 ? 's' : ''}
+			{ctx.data.tabs.length} tab{ctx.data.tabs.length > 1 ? 's' : ''}
 		</p>
 
 		<Label
@@ -78,14 +82,28 @@
 				</div>
 
 				<div class="flex shrink-0 items-center gap-1">
-					<Button
-						size="icon-sm"
-						variant="ghost"
-						title="Remove url from collection"
-						onclick={() => ctx.remove(item.url)}
-					>
-						<icons.global.remove />
-					</Button>
+					<ButtonGroup.Root>
+						<Button
+							size="icon-sm"
+							variant="ghost"
+							title={item.isMuted ? 'Unmute tab' : 'Mute tab'}
+							onclick={() => ctx.toggleIsMuted(item.url)}
+						>
+							{#if item.isMuted}
+								<icons.global.deaphened />
+							{:else}
+								<icons.global.undeaphened />
+							{/if}
+						</Button>
+						<Button
+							size="icon-sm"
+							variant="ghost"
+							title="Remove tab from collection"
+							onclick={() => ctx.remove(item.url)}
+						>
+							<icons.global.remove />
+						</Button>
+					</ButtonGroup.Root>
 
 					<div use:dragHandle class="cursor-grab active:cursor-grabbing">
 						<icons.global.drag class="size-4 text-muted-foreground" />
@@ -95,5 +113,5 @@
 		{/each}
 	</div>
 
-	<AddUrlAction />
+	<AddManualTabAction />
 </div>

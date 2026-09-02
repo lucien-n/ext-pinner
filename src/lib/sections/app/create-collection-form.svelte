@@ -28,7 +28,9 @@
 
 		error = await pinner.save({
 			name: newCollectionName,
-			urls: pinnedTabs.flatMap((tab) => tab.url ?? [])
+			tabs: pinnedTabs.flatMap((tab) =>
+				tab.url ? { url: tab.url, isMuted: !!tab.mutedInfo?.muted } : []
+			)
 		});
 
 		if (!error) {

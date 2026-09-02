@@ -6,20 +6,25 @@ export const urlSchema = v.pipe(
 	v.transform((url) => url.trim().toLowerCase())
 );
 
+// todo: tab id to allow duplicate tab urls
+export const tabSchema = v.object({
+	url: urlSchema,
+	isMuted: v.boolean()
+});
+
+export type TabData = v.InferInput<typeof tabSchema>;
+
 export const pinnerCollectionDataSchema = v.object({
 	id: v.string(),
 	name: v.pipe(v.string(), v.minLength(2), v.maxLength(32)),
-	urls: v.array(urlSchema)
+	tabs: v.array(tabSchema)
 });
 
 export type PinnerCollectionData = v.InferInput<typeof pinnerCollectionDataSchema>;
 
 export const createPinnerCollectionSchema = v.object({
 	name: pinnerCollectionDataSchema.entries.name,
-	urls: v.pipe(
-		pinnerCollectionDataSchema.entries.urls,
-		v.transform((urls) => [...new Set(urls)])
-	)
+	tabs: v.pipe(pinnerCollectionDataSchema.entries.tabs)
 });
 
 export type CreatePinnerCollection = v.InferInput<typeof createPinnerCollectionSchema>;

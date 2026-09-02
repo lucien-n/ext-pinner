@@ -91,13 +91,13 @@ export function usePinner(): UsePinnerReturn {
 
 				data.collections[index] = {
 					...existingCollection,
-					urls: parsedInput.urls
+					tabs: parsedInput.tabs
 				};
 			} else {
 				const newCollection: PinnerCollectionData = {
 					id: nanoid(),
 					name: parsedInput.name,
-					urls: parsedInput.urls
+					tabs: parsedInput.tabs
 				};
 
 				data.collections.push(newCollection);

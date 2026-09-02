@@ -1,7 +1,7 @@
-import { replacePinnedUrls } from '$lib/helpers.js';
+import { replacePinnedTabs } from '$lib/helpers.js';
 import { usePinner, type UsePinnerReturn } from '$lib/hooks/usePinner.svelte.js';
 import { getContext, setContext } from 'svelte';
-import type { PinnerCollectionData } from '../schema.js';
+import type { PinnerCollectionData, TabData } from '../schema.js';
 
 class PinnerCollectionCtx {
 	data = $state<PinnerCollectionData>()!;
@@ -25,24 +25,35 @@ class PinnerCollectionCtx {
 	}
 
 	load() {
-		return replacePinnedUrls(this.data.urls);
+		return replacePinnedTabs(this.data.tabs);
 	}
 
-	add(url: string) {
-		this.data.urls = [...new Set([...this.data.urls, url])];
+	add(tab: TabData) {
+		// todo: adding a tab with the exact same url as an existing one will cause issues
+		// fix by introducing tab ids
+		this.data.tabs.push(tab);
 
 		this.save();
 	}
 
 	// todo: what do we do when we remove the last url of a collection ? (delete ?)
 	remove(url: string) {
-		this.data.urls = this.data.urls.filter((u) => u !== url);
+		this.data.tabs = this.data.tabs.filter((tab) => tab.url !== url);
 
 		this.save();
 	}
 
-	reorder(newUrls: string[]) {
-		this.data.urls = newUrls;
+	reorder(newTabs: TabData[]) {
+		this.data.tabs = newTabs;
+
+		this.save();
+	}
+
+	toggleIsMuted(url: string) {
+		const tab = this.data.tabs.find((tab) => tab.url === url);
+		if (!tab) return;
+
+		tab.isMuted = !tab.isMuted;
 
 		this.save();
 	}
