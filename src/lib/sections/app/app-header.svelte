@@ -33,11 +33,12 @@
 				class: 'self-start text-xs text-muted-foreground'
 			})}
 			title={isOpen ? 'Collapse' : pinnedTabs.join('\n')}
+			disabled={!pinnedTabs.length}
 		>
 			{#if isOpen}
 				Collapse
 			{:else}
-				{pinnedTabs.length} currently pinned tab{pinnedTabs.length > 1 ? 's' : ''}
+				{pinnedTabs.length || 'No'} currently pinned tab{pinnedTabs.length > 1 ? 's' : ''}
 			{/if}
 
 			<icons.global.collapse />
