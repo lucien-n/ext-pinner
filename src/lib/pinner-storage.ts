@@ -66,7 +66,6 @@ const nextVersionMap = {
 	0: 1
 } as const satisfies Record<Exclude<SchemaVersions, typeof LATEST_SCHEMA_VERSION>, SchemaVersions>;
 type NextVersionMap = typeof nextVersionMap;
-type MigratableVersion = keyof typeof nextVersionMap;
 
 type Migration<From extends keyof NextVersionMap> = {
 	up: (data: SchemaOutputMap[From]) => SchemaOutputMap[NextVersionMap[From]];
@@ -118,8 +117,8 @@ export async function loadPinnerData(): Promise<PinnerData | undefined> {
 
 	let version = getStoredSchemaVersion(storedData);
 
-	while (version < LATEST_SCHEMA_VERSION) {
-		const migratableVersion = version as MigratableVersion;
+	while (version in nextVersionMap) {
+		const migratableVersion = version as keyof typeof nextVersionMap;
 
 		const schema = schemas[migratableVersion];
 		const parsed = v.safeParse(schema, data);
