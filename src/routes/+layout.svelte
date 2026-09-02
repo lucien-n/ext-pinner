@@ -5,11 +5,16 @@
 	if (dev) installChromeMock();
 
 	import favicon from '$lib/assets/favicon.svg';
+	import { initializePinner } from '$lib/hooks/usePinner.svelte';
 	import AppHeader from '$lib/sections/app/app-header.svelte';
 	import { ScrollArea } from '&/scroll-area';
 	import './layout.css';
 
 	const { children } = $props();
+
+	$effect(() => {
+		initializePinner();
+	});
 </script>
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>

@@ -1,8 +1,8 @@
 <script lang="ts">
+	import icons from '$lib/icons';
 	import { cn } from '$lib/shadcn/utils.js';
 	import { Button } from '&/button';
 	import { Input } from '&/input';
-	import AddIcon from '@lucide/svelte/icons/plus';
 	import * as v from 'valibot';
 	import { urlSchema } from '../../schema.js';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
@@ -47,7 +47,7 @@
 		onclick={handleAddUrl}
 		disabled={isAddShown && !isNewUrlValid}
 	>
-		<AddIcon />
+		<icons.global.add />
 		Add
 	</Button>
 	{#if isAddShown}

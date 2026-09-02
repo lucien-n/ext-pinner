@@ -1,10 +1,10 @@
 <script lang="ts">
+	import icons from '$lib/icons';
 	import { Button, buttonVariants } from '&/button';
 	import * as ButtonGroup from '&/button-group';
 	import { Checkbox } from '&/checkbox';
 	import { Label } from '&/label';
-	import LoadIcon from '@lucide/svelte/icons/square-arrow-out-up-right';
-	import DeleteIcon from '@lucide/svelte/icons/trash-2';
+
 	import { getPinnerCollectionCtx } from './pinner-collection.ctx.svelte.js';
 
 	const ctx = getPinnerCollectionCtx();
@@ -47,7 +47,7 @@
 			size="icon"
 			onclick={() => ctx.load()}
 		>
-			<LoadIcon />
+			<icons.global.load />
 		</Button>
 
 		<Button
@@ -56,7 +56,7 @@
 			title="Delete collection"
 			onclick={() => (isWaitingForDeleteConfirmation = true)}
 		>
-			<DeleteIcon />
+			<icons.global.delete />
 		</Button>
 	</ButtonGroup.Root>
 {/if}

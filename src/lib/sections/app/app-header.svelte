@@ -1,7 +1,7 @@
 <script lang="ts">
+	import icons from '$lib/icons';
 	import { Button, buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
-	import CollapseIcon from '@lucide/svelte/icons/chevrons-up-down';
 	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 
@@ -37,10 +37,10 @@
 			{#if isOpen}
 				Collapse
 			{:else}
-				{pinnedTabs.length} pinned tab{pinnedTabs.length > 1 ? 's' : ''}
+				{pinnedTabs.length} currently pinned tab{pinnedTabs.length > 1 ? 's' : ''}
 			{/if}
 
-			<CollapseIcon />
+			<icons.global.collapse />
 		</Collapsible.Trigger>
 	</div>
 

@@ -22,6 +22,36 @@ let data = $state<PinnerData>({
 	autoloadId: null
 });
 
+let initialized = false;
+
+export async function initializePinner() {
+	if (initialized) return;
+
+	initialized = true;
+
+	const loaded = await loadPinnerData();
+	if (!loaded) return;
+
+	data = loaded;
+
+	if (data.autoloadId && !isAutoloadIdValid(data.autoloadId)) {
+		data.autoloadId = null;
+		await saveData();
+	}
+}
+
+async function saveData() {
+	await savePinnerData($state.snapshot(data));
+}
+
+function isAutoloadIdValid(id: string) {
+	return data.collections.some((c) => c.id === id);
+}
+
+function getCollectionByName(name: string) {
+	return data.collections.find((c) => c.name.toLowerCase() === name.trim().toLowerCase());
+}
+
 export function usePinner(): UsePinnerReturn {
 	onMount(async () => {
 		await loadData();
@@ -45,10 +75,6 @@ export function usePinner(): UsePinnerReturn {
 
 	function isAutoloadIdValid(autoloadId: string) {
 		return data.collections.some((c) => c.id === autoloadId);
-	}
-
-	function getCollectionByName(name: string) {
-		return data.collections.find((c) => c.name.toLowerCase() === name.trim().toLowerCase());
 	}
 
 	return {
@@ -86,10 +112,10 @@ export function usePinner(): UsePinnerReturn {
 		async setAutoloadId(newAutoloadId) {
 			if (newAutoloadId && !isAutoloadIdValid(newAutoloadId)) {
 				data.autoloadId = null;
-				return;
+			} else {
+				data.autoloadId = newAutoloadId;
 			}
 
-			data.autoloadId = newAutoloadId;
 			await saveData();
 		},
 		getByName: getCollectionByName,

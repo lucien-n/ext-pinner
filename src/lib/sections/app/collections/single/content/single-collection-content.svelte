@@ -2,8 +2,8 @@
 	import { Button, buttonVariants } from '&/button';
 	import { Checkbox } from '&/checkbox';
 	import { Label } from '&/label';
-	import DragIcon from '@lucide/svelte/icons/grip-vertical';
-	import RemoveIcon from '@lucide/svelte/icons/x';
+
+	import icons from '$lib/icons';
 	import { dragHandle, dragHandleZone, type DndEvent } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
@@ -84,11 +84,11 @@
 						title="Remove url from collection"
 						onclick={() => ctx.remove(item.url)}
 					>
-						<RemoveIcon />
+						<icons.global.remove />
 					</Button>
 
 					<div use:dragHandle class="cursor-grab active:cursor-grabbing">
-						<DragIcon class="size-4 text-muted-foreground" />
+						<icons.global.drag class="size-4 text-muted-foreground" />
 					</div>
 				</div>
 			</div>

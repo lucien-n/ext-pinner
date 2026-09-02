@@ -1,11 +1,22 @@
 <script lang="ts">
 	import { usePinner } from '$lib/hooks/usePinner.svelte.js';
+	import { useUi } from '$lib/hooks/useUi.svelte';
+	import icons from '$lib/icons';
 	import { Button } from '&/button';
 	import { Input } from '&/input';
-	import CollectionIcon from '@lucide/svelte/icons/library';
 	import { slide } from 'svelte/transition';
 
 	const pinner = usePinner();
+	const ui = useUi();
+
+	let inputEl = $state<HTMLInputElement | null>(null);
+	$effect(() => {
+		ui.focusCreateCollection = () => inputEl?.focus();
+
+		return () => {
+			ui.focusCreateCollection = null;
+		};
+	});
 
 	let newCollectionName = $state('');
 	let error = $state<string | undefined>();
@@ -30,7 +41,9 @@
 	<div class="flex gap-1">
 		<div class="flex w-full flex-col gap-1">
 			<div class="relative">
-				<CollectionIcon class="absolute left-3 my-auto size-3.5 h-full text-muted-foreground" />
+				<icons.app.collection
+					class="absolute left-3 my-auto size-3.5 h-full text-muted-foreground"
+				/>
 				<Input
 					placeholder="My Collection"
 					name="new-collection-name"
@@ -38,6 +51,7 @@
 					oninput={() => (error = '')}
 					aria-invalid={!!error}
 					bind:value={newCollectionName}
+					bind:ref={inputEl}
 				/>
 			</div>
 			{#if error}
