@@ -1,5 +1,13 @@
 {
 	"files.associations": {
 		"*.css": "tailwindcss"
-	}
+	},
+	"js/ts.preferences.autoImportSpecifierExcludeRegexes": [
+		"shadcn/ui/.*/index\\.js$",
+		"shadcn/ui/.*/[a-z].*\\.svelte$",
+		"^&/[a-z-]*/[a-z-]*\\.svelte$"
+	],
+	"js/ts.preferences.importModuleSpecifierEnding": "minimal",
+	"files.watcherExclude": { "**/lib/shadcn/ui/**": true },
+	"search.exclude": { "**/lib/shadcn/ui/**": true }
 }
