@@ -18,7 +18,7 @@
 		<Accordion.Root type="single">
 			{#each pinner.collections as collection (collection.id)}
 				<PinnerCollectionCtx data={collection}>
-					<Accordion.Item value="{collection.name}-{collection.urls.join(',')}">
+					<Accordion.Item value={collection.name}>
 						<SingleCollection />
 					</Accordion.Item>
 				</PinnerCollectionCtx>
