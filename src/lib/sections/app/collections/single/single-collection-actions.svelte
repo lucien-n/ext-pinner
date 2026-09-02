@@ -17,19 +17,25 @@
 	<Button
 		variant="destructive"
 		title="Confirm collection deletion (unrecoverable)"
-		onclick={() => ctx.delete()}
+		onclick={(e) => {
+			e.stopPropagation();
+			ctx.delete();
+		}}
 	>
 		Yes
 	</Button>
 	<Button
 		variant="secondary"
 		title="Cancel collection deletion"
-		onclick={() => (isWaitingForDeleteConfirmation = false)}
+		onclick={(e) => {
+			e.stopPropagation();
+			isWaitingForDeleteConfirmation = false;
+		}}
 	>
 		Cancel
 	</Button>
 {:else}
-	<ButtonGroup.Root>
+	<ButtonGroup.Root onclick={(e) => e.stopPropagation()}>
 		<Label class={buttonVariants({ variant: 'ghost' })}>
 			Autoload
 			<Checkbox checked={ctx.isAutoload} onCheckedChange={(checked) => ctx.setAutoload(checked)} />
