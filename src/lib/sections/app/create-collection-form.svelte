@@ -27,14 +27,14 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	<div class="flex gap-1 p-1">
+	<div class="flex gap-1">
 		<div class="flex w-full flex-col gap-1">
 			<div class="relative">
 				<CollectionIcon class="absolute left-3 my-auto size-3.5 h-full text-muted-foreground" />
 				<Input
 					placeholder="My Collection"
 					name="new-collection-name"
-					class="pl-8 text-sm placeholder:text-xs"
+					class="bg-card pl-8 text-sm placeholder:text-xs"
 					oninput={() => (error = '')}
 					aria-invalid={!!error}
 					bind:value={newCollectionName}
