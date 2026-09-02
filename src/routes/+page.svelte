@@ -1,7 +1,7 @@
 <script lang="ts">
-	import AppHeader from '$lib/sections/app/app-header.svelte';
 	import PinnerCollectionCtx from '$lib/sections/app/collections/single/pinner-collection-ctx.svelte';
 	import SingleCollection from '$lib/sections/app/collections/single/single-collection.svelte';
+	import CreateCollectionForm from '$lib/sections/app/create-collection-form.svelte';
 	import * as Accordion from '&/accordion';
 	import { Separator } from '&/separator';
 	import { usePinner } from '../lib/hooks/usePinner.svelte.js';
@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex flex-col gap-3">
-	<AppHeader />
+	<CreateCollectionForm />
 
 	<Separator />
 

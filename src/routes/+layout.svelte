@@ -5,6 +5,7 @@
 	if (dev) installChromeMock();
 
 	import favicon from '$lib/assets/favicon.svg';
+	import AppHeader from '$lib/sections/app/app-header.svelte';
 	import { ScrollArea } from '&/scroll-area';
 	import './layout.css';
 
@@ -14,12 +15,11 @@
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
 <div class="flex h-[400] w-md min-w-md flex-col gap-1 bg-background p-2">
-	<div class="flex items-center gap-2 px-5 pt-1">
-		<img src="icon.svg" alt="Pinner icon" class="w-4" />
-		<h1 class="text-lg font-semibold">Pinner</h1>
+	<div class="flex flex-col gap-1 px-5 pt-1">
+		<AppHeader />
 	</div>
 
-	<ScrollArea type="scroll" class="h-full p-3 pt-2">
+	<ScrollArea type="scroll" class="h-full p-3 pt-0">
 		{@render children()}
 	</ScrollArea>
 </div>
