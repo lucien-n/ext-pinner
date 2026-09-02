@@ -49,18 +49,27 @@
 			{#if open}
 				<div {...props} transition:slide={{ duration: 200 }}>
 					{#each pinnedTabs as tab (tab.index + '-' + tab.url)}
-						<Button
-							variant="link"
-							class="block w-full min-w-0 overflow-hidden p-0 text-left text-sm text-ellipsis whitespace-nowrap text-inherit"
-							title={tab.url}
-							onclick={async () => {
-								await chrome.tabs.highlight({
-									tabs: [tab.index]
-								});
-							}}
-						>
-							{tab.url}
-						</Button>
+						{@const hostname = new URL(tab.url).hostname}
+						<div class="flex items-center gap-1">
+							<img
+								src="https://www.google.com/s2/favicons?domain={hostname}&sz=32"
+								alt="{hostname}'s icon"
+								class="size-4"
+							/>
+
+							<Button
+								variant="link"
+								class="block w-full min-w-0 overflow-hidden p-0 text-left text-sm text-ellipsis whitespace-nowrap text-inherit"
+								title={tab.url}
+								onclick={async () => {
+									await chrome.tabs.highlight({
+										tabs: [tab.index]
+									});
+								}}
+							>
+								{tab.url}
+							</Button>
+						</div>
 					{/each}
 				</div>
 			{/if}
