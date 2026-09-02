@@ -29,13 +29,14 @@
 <div class="flex gap-1">
 	<Input
 		bind:ref={newUrlInputRef}
+		bind:value={newUrl}
 		class={cn(
 			'w-0 min-w-0 border-0 p-0 opacity-0 transition-all duration-300 ease-in-out',
 			isAddShown && 'w-full! border! p-2! opacity-100!'
 		)}
 		placeholder="https://myurl.com"
 		type="url"
-		bind:value={newUrl}
+		spellcheck="false"
 		onkeydown={(e) => {
 			if (e.key !== 'Enter') return;
 
