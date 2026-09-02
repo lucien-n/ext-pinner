@@ -26,13 +26,16 @@
 </script>
 
 <div class="flex flex-col gap-1 px-2">
-	<div class="flex gap-1">
+	<div class="flex justify-between">
 		<p class="text-sm font-medium">
 			{ctx.data.urls.length} tab{ctx.data.urls.length > 1 ? 's' : ''}
 		</p>
 
-		<Label class={buttonVariants({ size: 'xs', variant: 'ghost' })}>
-			Show full
+		<Label
+			class={buttonVariants({ size: 'xs', variant: 'ghost' })}
+			title="Shows complete urls as they were saved"
+		>
+			Show full urls
 			<Checkbox bind:checked={shouldShowFullUrls} />
 		</Label>
 	</div>

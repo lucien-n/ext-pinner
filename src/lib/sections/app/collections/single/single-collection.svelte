@@ -8,8 +8,8 @@
 	const ctx = getPinnerCollectionCtx();
 </script>
 
-<Accordion.Trigger class="items-center hover:no-underline">
-	<div class="flex w-full min-w-0 items-center gap-5" transition:slide>
+<Accordion.Trigger class="items-center gap-1 hover:no-underline">
+	<div class="flex w-full min-w-0" transition:slide>
 		<p
 			class="ml-1 min-w-0 flex-1 overflow-hidden text-base text-ellipsis whitespace-nowrap"
 			title={ctx.data.name}
