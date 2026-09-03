@@ -1,6 +1,12 @@
 # Changelog
 
-## [v1.1.1] - 2026-09-03
+## [1.1.2] - YYYY-MM-DD
+
+### Added
+
+- Build and associate
+
+## [1.1.1] - 2026-09-03
 
 ### Added
 
@@ -21,4 +27,5 @@
 
 _Initial release._
 
+[1.1.2]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.2
 [1.1.1]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.1
