@@ -7,8 +7,8 @@
 	import icons from '$lib/icons';
 	import * as ButtonGroup from '&/button-group';
 	import { dragHandle, dragHandleZone, type DndEvent } from 'svelte-dnd-action';
-	import { flip } from 'svelte/animate';
 	import { SvelteURL } from 'svelte/reactivity';
+	import { slide } from 'svelte/transition';
 	import type { TabData } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
 	import AddManualTabAction from './add-manual-tab-action.svelte';
@@ -60,7 +60,7 @@
 		class="flex flex-col gap-1"
 	>
 		{#each items as item (item.id)}
-			<div class="flex min-w-0 items-center justify-between" animate:flip={{ duration: 150 }}>
+			<div class="flex min-w-0 items-center justify-between" transition:slide>
 				<div class="flex gap-1">
 					<LinkPreview
 						url={new SvelteURL(item.url)}
