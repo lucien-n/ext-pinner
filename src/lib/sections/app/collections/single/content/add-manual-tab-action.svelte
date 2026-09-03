@@ -4,7 +4,7 @@
 	import { Button } from '&/button';
 	import { Input } from '&/input';
 	import * as v from 'valibot';
-	import { urlSchema } from '../../schema.js';
+	import { urlSchema } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
 
 	// todo: toggle auto mute button ?
@@ -14,12 +14,23 @@
 	let newUrlInputRef = $state<HTMLInputElement | null>(null);
 
 	let isAddShown = $state(false);
+
 	let newTabUrl = $state('');
-	const isNewUrlValid = $derived(v.safeParse(urlSchema, newTabUrl).success);
+	const formattedNewTabUrl = $derived.by(() => {
+		const inputs = [newTabUrl, `https://${newTabUrl}`];
+		for (const input of inputs) {
+			const result = v.safeParse(urlSchema, input);
+			if (result.success) return result.output;
+		}
+
+		return '';
+	});
+
+	const isNewTabUrlValid = $derived(v.safeParse(urlSchema, formattedNewTabUrl).success);
 
 	function handleAddUrl() {
-		if (isAddShown && isNewUrlValid) {
-			ctx.add({ url: newTabUrl, isMuted: false });
+		if (isAddShown && isNewTabUrlValid) {
+			ctx.add({ url: formattedNewTabUrl, isMuted: false });
 		} else {
 			newUrlInputRef?.focus();
 		}
@@ -38,7 +49,7 @@
 			'w-0 min-w-0 border-0 p-0 opacity-0 transition-all duration-300 ease-in-out',
 			isAddShown && 'w-full! border! p-2! opacity-100!'
 		)}
-		placeholder="https://myurl.com"
+		placeholder="https://myurl.com or myurl.com"
 		type="url"
 		spellcheck="false"
 		onkeydown={(e) => {
@@ -50,7 +61,7 @@
 	<Button
 		variant={isAddShown ? 'default' : 'ghost'}
 		onclick={handleAddUrl}
-		disabled={isAddShown && !isNewUrlValid}
+		disabled={isAddShown && !isNewTabUrlValid}
 	>
 		<icons.global.add />
 		Add
