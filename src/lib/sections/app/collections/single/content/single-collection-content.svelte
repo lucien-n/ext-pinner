@@ -3,10 +3,12 @@
 	import { Checkbox } from '&/checkbox';
 	import { Label } from '&/label';
 
+	import LinkPreview from '$lib/components/link-preview.svelte';
 	import icons from '$lib/icons';
 	import * as ButtonGroup from '&/button-group';
 	import { dragHandle, dragHandleZone, type DndEvent } from 'svelte-dnd-action';
 	import { flip } from 'svelte/animate';
+	import { SvelteURL } from 'svelte/reactivity';
 	import type { TabData } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
 	import AddManualTabAction from './add-manual-tab-action.svelte';
@@ -58,27 +60,12 @@
 		class="flex flex-col gap-1"
 	>
 		{#each items as item (item.id)}
-			{@const hostname = new URL(item.url).hostname}
 			<div class="flex min-w-0 items-center justify-between" animate:flip={{ duration: 150 }}>
 				<div class="flex gap-1">
-					<img
-						src="https://www.google.com/s2/favicons?domain={hostname}&sz=32"
-						alt="{hostname}'s icon"
-						class="mt-1 size-4"
+					<LinkPreview
+						url={new SvelteURL(item.url)}
+						variant={shouldShowFullUrls ? 'full' : 'short'}
 					/>
-
-					<Button
-						variant="link"
-						href={item.url}
-						target="_blank"
-						class="block min-w-0 flex-1 overflow-hidden px-0 py-0 text-left font-normal text-ellipsis whitespace-nowrap"
-					>
-						{#if shouldShowFullUrls}
-							{item.url}
-						{:else}
-							{hostname}
-						{/if}
-					</Button>
 				</div>
 
 				<div class="flex shrink-0 items-center gap-1">

@@ -1,8 +1,10 @@
 <script lang="ts">
+	import LinkPreview from '$lib/components/link-preview.svelte';
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import icons from '$lib/icons';
 	import { Button, buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
+	import { SvelteURL } from 'svelte/reactivity';
 	import { slide } from 'svelte/transition';
 
 	let isOpen = $state(false);
@@ -42,13 +44,8 @@
 			{#if open}
 				<div {...props} transition:slide={{ duration: 200 }}>
 					{#each pinnedTabs.current as tab (tab.index + '-' + tab.url)}
-						{@const hostname = new URL(tab.url).hostname}
 						<div class="flex items-center gap-1">
-							<img
-								src="https://www.google.com/s2/favicons?domain={hostname}&sz=32"
-								alt="{hostname}'s icon"
-								class="size-4"
-							/>
+							<LinkPreview url={new SvelteURL(tab.url)} variant="full" />
 
 							<Button
 								variant="link"

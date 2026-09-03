@@ -8,6 +8,7 @@
 
 - [x] Migrate storage
 - [ ] Persist muted state
+- [ ] Show tab count in folded state
 
 ### Fixed
 

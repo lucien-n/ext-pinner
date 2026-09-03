@@ -4,7 +4,7 @@ import CollectionIcon from '@lucide/svelte/icons/library';
 import AddIcon from '@lucide/svelte/icons/plus';
 import LoadIcon from '@lucide/svelte/icons/square-arrow-out-up-right';
 import DeleteIcon from '@lucide/svelte/icons/trash-2';
-import UndeaphenedIcon from '@lucide/svelte/icons/volume';
+import UndeaphenedIcon from '@lucide/svelte/icons/volume-2';
 import DeaphenedIcon from '@lucide/svelte/icons/volume-off';
 import RemoveIcon from '@lucide/svelte/icons/x';
 
