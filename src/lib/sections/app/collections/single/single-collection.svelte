@@ -9,14 +9,16 @@
 </script>
 
 <Accordion.Trigger class="items-center gap-1 hover:no-underline">
-	<div class="flex w-full min-w-0" transition:slide>
+	<div class="flex w-full min-w-0 items-center gap-2" transition:slide>
 		<p
-			class="ml-1 min-w-0 flex-1 overflow-hidden text-base text-ellipsis whitespace-nowrap"
+			class="ml-1 min-w-0 overflow-hidden text-base text-ellipsis whitespace-nowrap"
 			title={ctx.data.name}
 		>
 			{ctx.data.name}
 		</p>
-		<p class="text-xs text-muted-foreground">({ctx.data.tabs.length})</p>
+		<p class="text-xs text-muted-foreground italic">
+			{ctx.data.tabs.length} tab{ctx.data.tabs.length > 1 ? 's' : ''}
+		</p>
 	</div>
 
 	<div class="flex items-center gap-1">
