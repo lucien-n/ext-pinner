@@ -2,6 +2,10 @@
 
 ## [1.1.3] - YYYY-MM-DD
 
+### Added
+
+- Display empty placeholder for empty collections
+
 ### Changed
 
 - Add urls to a collection without specifying protocol (defaults to https)
