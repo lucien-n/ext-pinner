@@ -4,18 +4,18 @@
 
 ### Added
 
-- [x] Migrate storage
-- [x] Persist muted state
-- [x] Show tab count in folded state
-- [x] Create collection on Enter pressed while input focused
-- [x] Release workflow creates a release based on a tag and its associated changelog entry
+- Migrate storage
+- Persist muted state
+- Show tab count in folded state
+- Create collection on Enter pressed while input focused
+- Release workflow creates a release based on a tag and its associated changelog entry
 
 ### Fixed
 
-- [x] Listen to tabs changes for the app header tabs preview
-- [x] Reset `autoloadId` when the corresponding tab is removed from the collection
-- [x] Reset pinner data when migration fails & save a backup of invalid data
-- [x] Missing fields for dev chrome mock
+- Listen to tabs changes for the app header tabs preview
+- Reset `autoloadId` when the corresponding tab is removed from the collection
+- Reset pinner data when migration fails & save a backup of invalid data
+- Missing fields for dev chrome mock
 
 ## 1.0.0 - 2019-08-23
 
