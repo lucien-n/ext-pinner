@@ -52,6 +52,11 @@
 					class="bg-card pl-8 text-sm placeholder:text-xs"
 					oninput={() => (error = '')}
 					aria-invalid={!!error}
+					onkeydown={(e) => {
+						if (e.key !== 'Enter') return;
+
+						handleSaveCollection();
+					}}
 					bind:value={newCollectionName}
 					bind:ref={inputEl}
 				/>

@@ -9,6 +9,7 @@
 - [x] Migrate storage
 - [x] Persist muted state
 - [ ] Show tab count in folded state
+- [x] Create collection on Enter pressed while input focused
 
 ### Fixed
 
