@@ -1,3 +1,4 @@
+import { m } from '$lib/paraglide/messages';
 import {
 	INIT_PINNER_DATA,
 	loadPinnerData,
@@ -83,7 +84,7 @@ export function usePinner(): UsePinnerReturn {
 		async save(input) {
 			const result = v.safeParse(createPinnerCollectionSchema, input);
 			if (!result.success) {
-				return 'Invalid name';
+				return m.major_legal_buzzard_zoom();
 			}
 			const parsedInput = result.output;
 
