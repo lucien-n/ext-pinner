@@ -37,8 +37,8 @@
 	</Button>
 {:else}
 	<ButtonGroup.Root onclick={(e) => e.stopPropagation()}>
-		<Label class={buttonVariants({ variant: 'ghost' })}>
-			Autoload
+		<Label class={buttonVariants({ variant: 'ghost' })} title={m.every_same_puffin_empower()}>
+			{m.stout_broad_weasel_pull()}
 			<Checkbox checked={ctx.isAutoload} onCheckedChange={(checked) => ctx.setAutoload(checked)} />
 		</Label>
 
