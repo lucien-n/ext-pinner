@@ -4,7 +4,9 @@
 
 ### Added
 
-- `@inlang/paraglide-js` 2.18.2
+- Add english translation
+- Add french translation
+- Add `@inlang/paraglide-js` 2.18.2
 - Display empty placeholder for empty collections
 - Show muted icon for muted tabs in app header recap
 
