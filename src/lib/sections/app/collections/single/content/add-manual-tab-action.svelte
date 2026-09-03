@@ -14,24 +14,26 @@
 	let newUrlInputRef = $state<HTMLInputElement | null>(null);
 
 	let isAddShown = $state(false);
-	let newUrl = $state('');
-	const isNewUrlValid = $derived(v.safeParse(urlSchema, newUrl).success);
+	let newTabUrl = $state('');
+	const isNewUrlValid = $derived(v.safeParse(urlSchema, newTabUrl).success);
 
 	function handleAddUrl() {
 		if (isAddShown && isNewUrlValid) {
-			ctx.add({ url: newUrl, isMuted: false });
+			ctx.add({ url: newTabUrl, isMuted: false });
 		} else {
 			newUrlInputRef?.focus();
 		}
 
 		isAddShown = !isAddShown;
+
+		newTabUrl = '';
 	}
 </script>
 
 <div class="flex gap-1">
 	<Input
 		bind:ref={newUrlInputRef}
-		bind:value={newUrl}
+		bind:value={newTabUrl}
 		class={cn(
 			'w-0 min-w-0 border-0 p-0 opacity-0 transition-all duration-300 ease-in-out',
 			isAddShown && 'w-full! border! p-2! opacity-100!'

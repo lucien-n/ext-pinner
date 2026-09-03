@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.2] - YYYY-MM-DD
+
+### Fixed
+
+- Empty add manual tab input on submit
+
 ## [1.1.2] - 2026-09-03
 
 ### Added
