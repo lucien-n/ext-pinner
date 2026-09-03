@@ -1,5 +1,6 @@
 <script lang="ts">
 	import icons from '$lib/icons';
+	import { m } from '$lib/paraglide/messages';
 	import { Button, buttonVariants } from '&/button';
 	import * as ButtonGroup from '&/button-group';
 	import { Checkbox } from '&/checkbox';
@@ -13,26 +14,26 @@
 </script>
 
 {#if isWaitingForDeleteConfirmation}
-	<p class="text-md font-semibold whitespace-nowrap">Are you sure ?</p>
+	<p class="text-md font-semibold whitespace-nowrap">{m.cozy_long_oryx_type()}</p>
 	<Button
 		variant="destructive"
-		title="Confirm collection deletion (unrecoverable)"
+		title={m.super_icy_baboon_compose()}
 		onclick={(e) => {
 			e.stopPropagation();
 			ctx.delete();
 		}}
 	>
-		Yes
+		{m.steep_wacky_maggot_hurl()}
 	</Button>
 	<Button
 		variant="secondary"
-		title="Cancel collection deletion"
+		title={m.home_small_cowfish_grin()}
 		onclick={(e) => {
 			e.stopPropagation();
 			isWaitingForDeleteConfirmation = false;
 		}}
 	>
-		Cancel
+		{m.strong_wacky_manatee_achieve()}
 	</Button>
 {:else}
 	<ButtonGroup.Root onclick={(e) => e.stopPropagation()}>
@@ -43,7 +44,7 @@
 
 		<Button
 			variant="ghost"
-			title="Load collection - replaces currently pinned tabs"
+			title={m.sharp_wacky_giraffe_hurl()}
 			size="icon"
 			onclick={() => ctx.load()}
 		>
@@ -53,7 +54,7 @@
 		<Button
 			size="icon"
 			variant="ghost"
-			title="Delete collection"
+			title={m.clear_gaudy_goldfish_pick()}
 			onclick={() => (isWaitingForDeleteConfirmation = true)}
 		>
 			<icons.global.delete />
