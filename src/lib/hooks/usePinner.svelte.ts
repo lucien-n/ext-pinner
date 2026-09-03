@@ -1,4 +1,9 @@
-import { loadPinnerData, savePinnerData, type PinnerData } from '$lib/pinner-storage.js';
+import {
+	INIT_PINNER_DATA,
+	loadPinnerData,
+	savePinnerData,
+	type PinnerData
+} from '$lib/pinner-storage.js';
 import {
 	createPinnerCollectionSchema,
 	type CreatePinnerCollection,
@@ -17,10 +22,7 @@ export interface UsePinnerReturn {
 	collections: PinnerData['collections'];
 }
 
-let data = $state<PinnerData>({
-	collections: [],
-	autoloadId: null
-});
+let data = $state<PinnerData>(INIT_PINNER_DATA);
 
 let initialized = false;
 
@@ -107,6 +109,11 @@ export function usePinner(): UsePinnerReturn {
 		},
 		async delete(id: string) {
 			data.collections = data.collections.filter((c) => c.id !== id);
+
+			if (id === data.autoloadId) {
+				data.autoloadId = null;
+			}
+
 			await saveData();
 		},
 		async setAutoloadId(newAutoloadId) {

@@ -90,7 +90,14 @@ export const schemasMigrations: {
 	}
 };
 
+export const INIT_PINNER_DATA: PinnerData = {
+	autoloadId: null,
+	collections: [],
+	version: 1
+};
+
 const KEY = 'data';
+const BACKUP_KEY = 'data:backup';
 
 const storedVersionSchema = v.object({
 	version: versionField
@@ -107,10 +114,15 @@ function getStoredSchemaVersion(stored: unknown): SchemaVersions {
 	return result.output.version as SchemaVersions;
 }
 
+async function backupAndResetData(data: unknown): Promise<void> {
+	await savePinnerData(INIT_PINNER_DATA);
+
+	await chrome.storage.local.set({ [BACKUP_KEY]: data });
+}
+
 export async function loadPinnerData(): Promise<PinnerData | undefined> {
 	const stored = await chrome.storage.local.get(KEY);
 	const storedData = stored[KEY];
-
 	if (!storedData) return undefined;
 
 	let data: unknown = storedData;
@@ -125,6 +137,9 @@ export async function loadPinnerData(): Promise<PinnerData | undefined> {
 
 		if (!parsed.success) {
 			console.error(`failed to validate pinner data at schema version ${migratableVersion}`);
+
+			await backupAndResetData(data);
+
 			return undefined;
 		}
 
@@ -136,6 +151,9 @@ export async function loadPinnerData(): Promise<PinnerData | undefined> {
 
 	if (!result.success) {
 		console.error('failed to validate migrated pinner data');
+
+		await backupAndResetData(data);
+
 		return undefined;
 	}
 
