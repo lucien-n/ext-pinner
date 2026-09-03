@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import { usePinner } from '$lib/hooks/usePinner.svelte.js';
 	import { useUi } from '$lib/hooks/useUi.svelte';
 	import icons from '$lib/icons';
@@ -8,6 +9,7 @@
 
 	const pinner = usePinner();
 	const ui = useUi();
+	const pinnedTabs = usePinnedTabs();
 
 	let inputEl = $state<HTMLInputElement | null>(null);
 	$effect(() => {
@@ -24,11 +26,9 @@
 	let existingCollection = $derived(newCollectionName && pinner.getByName(newCollectionName));
 
 	async function handleSaveCollection() {
-		const pinnedTabs = await chrome.tabs.query({ pinned: true });
-
 		error = await pinner.save({
 			name: newCollectionName,
-			tabs: pinnedTabs.flatMap((tab) =>
+			tabs: pinnedTabs.current.flatMap((tab) =>
 				tab.url ? { url: tab.url, isMuted: !!tab.mutedInfo?.muted } : []
 			)
 		});

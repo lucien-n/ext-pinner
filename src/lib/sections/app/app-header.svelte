@@ -1,22 +1,12 @@
 <script lang="ts">
+	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import icons from '$lib/icons';
 	import { Button, buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
-	import { onMount } from 'svelte';
 	import { slide } from 'svelte/transition';
 
 	let isOpen = $state(false);
-
-	interface Tab extends Omit<chrome.tabs.Tab, 'url'> {
-		url: string;
-	}
-
-	let pinnedTabs = $state<Tab[]>([]);
-
-	onMount(async () => {
-		const tabs = await chrome.tabs.query({ pinned: true });
-		pinnedTabs = tabs.filter((tab): tab is Tab => !!tab.url);
-	});
+	const pinnedTabs = usePinnedTabs();
 </script>
 
 <Collapsible.Root class="flex flex-col gap-1" bind:open={isOpen}>
@@ -32,14 +22,16 @@
 				variant: 'ghost',
 				class: 'self-start text-xs text-muted-foreground'
 			})}
-			title={isOpen ? 'Collapse' : pinnedTabs.join('\n')}
-			disabled={!pinnedTabs.length}
+			title={isOpen
+				? 'Collapse'
+				: pinnedTabs.current
+						.map((tab) => `${tab.url}${tab.mutedInfo?.muted ? ' - Muted' : ''}`)
+						.join('\n')}
+			disabled={!pinnedTabs.current.length}
 		>
-			{#if isOpen}
-				Collapse
-			{:else}
-				{pinnedTabs.length || 'No'} currently pinned tab{pinnedTabs.length > 1 ? 's' : ''}
-			{/if}
+			{pinnedTabs.current.length || 'No'} currently pinned tab{pinnedTabs.current.length > 1
+				? 's'
+				: ''}
 
 			<icons.global.collapse />
 		</Collapsible.Trigger>
@@ -49,7 +41,7 @@
 		{#snippet child({ props, open })}
 			{#if open}
 				<div {...props} transition:slide={{ duration: 200 }}>
-					{#each pinnedTabs as tab (tab.index + '-' + tab.url)}
+					{#each pinnedTabs.current as tab (tab.index + '-' + tab.url)}
 						{@const hostname = new URL(tab.url).hostname}
 						<div class="flex items-center gap-1">
 							<img

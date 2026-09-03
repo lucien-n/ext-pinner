@@ -6,4 +6,9 @@
 
 ### Added
 
-- Migrate storage
+- [x] Migrate storage
+- [ ] Persist muted state
+
+### Fixed
+
+- [x] Listen to tabs changes for the app header tabs preview
