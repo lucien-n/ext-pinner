@@ -7,8 +7,6 @@
 	import { urlSchema } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
 
-	// todo: toggle auto mute button ?
-
 	const ctx = getPinnerCollectionCtx();
 
 	let newUrlInputRef = $state<HTMLInputElement | null>(null);

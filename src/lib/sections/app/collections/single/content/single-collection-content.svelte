@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { Button, buttonVariants } from '&/button';
-	import { Checkbox } from '&/checkbox';
-	import { Label } from '&/label';
-
 	import LinkPreview from '$lib/components/link-preview.svelte';
 	import icons from '$lib/icons';
+	import { Button, buttonVariants } from '&/button';
 	import * as ButtonGroup from '&/button-group';
+	import { Checkbox } from '&/checkbox';
+	import * as Empty from '&/empty';
+	import { Label } from '&/label';
 	import { dragHandle, dragHandleZone, type DndEvent } from 'svelte-dnd-action';
 	import { SvelteURL } from 'svelte/reactivity';
 	import { slide } from 'svelte/transition';
@@ -46,59 +46,72 @@
 		</Label>
 	</div>
 
-	<div
-		use:dragHandleZone={{
-			items,
-			flipDurationMs: 150,
-			dropTargetStyle: {
-				outline: 'none',
-				'border-radius': 'var(--radius)'
-			}
-		}}
-		onconsider={handleDndConsider}
-		onfinalize={handleDndFinalize}
-		class="flex flex-col gap-1"
-	>
-		{#each items as item (item.id)}
-			<div class="flex min-w-0 items-center justify-between" transition:slide>
-				<div class="flex gap-1">
-					<LinkPreview
-						url={new SvelteURL(item.url)}
-						variant={shouldShowFullUrls ? 'full' : 'short'}
-					/>
-				</div>
+	{#if items.length}
+		<div
+			use:dragHandleZone={{
+				items,
+				flipDurationMs: 150,
+				dropTargetStyle: {
+					outline: 'none',
+					'border-radius': 'var(--radius)'
+				}
+			}}
+			onconsider={handleDndConsider}
+			onfinalize={handleDndFinalize}
+			class="flex flex-col gap-1"
+		>
+			{#each items as item (item.id)}
+				<div class="flex min-w-0 items-center justify-between" transition:slide>
+					<div class="flex gap-1">
+						<LinkPreview
+							url={new SvelteURL(item.url)}
+							variant={shouldShowFullUrls ? 'full' : 'short'}
+						/>
+					</div>
 
-				<div class="flex shrink-0 items-center gap-1">
-					<ButtonGroup.Root>
-						<Button
-							size="icon-sm"
-							variant="ghost"
-							title={item.isMuted ? 'Unmute tab' : 'Mute tab'}
-							onclick={() => ctx.toggleIsMuted(item.url)}
-						>
-							{#if item.isMuted}
-								<icons.global.deaphened />
-							{:else}
-								<icons.global.undeaphened />
-							{/if}
-						</Button>
-						<Button
-							size="icon-sm"
-							variant="ghost"
-							title="Remove tab from collection"
-							onclick={() => ctx.remove(item.url)}
-						>
-							<icons.global.remove />
-						</Button>
-					</ButtonGroup.Root>
+					<div class="flex shrink-0 items-center gap-1">
+						<ButtonGroup.Root>
+							<Button
+								size="icon-sm"
+								variant="ghost"
+								title={item.isMuted ? 'Unmute tab' : 'Mute tab'}
+								onclick={() => ctx.toggleIsMuted(item.url)}
+							>
+								{#if item.isMuted}
+									<icons.global.deaphened />
+								{:else}
+									<icons.global.undeaphened />
+								{/if}
+							</Button>
+							<Button
+								size="icon-sm"
+								variant="ghost"
+								title="Remove tab from collection"
+								onclick={() => ctx.remove(item.url)}
+							>
+								<icons.global.remove />
+							</Button>
+						</ButtonGroup.Root>
 
-					<div use:dragHandle class="cursor-grab active:cursor-grabbing">
-						<icons.global.drag class="size-4 text-muted-foreground" />
+						<div use:dragHandle class="cursor-grab active:cursor-grabbing">
+							<icons.global.drag class="size-4 text-muted-foreground" />
+						</div>
 					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</div>
+	{:else}
+		<Empty.Root>
+			<Empty.Header>
+				<Empty.Title>Empty collection</Empty.Title>
+				<Empty.Description>
+					This collection doesn't have any tabs yet.
+					<br />
+					Add one by entering a url below.
+				</Empty.Description>
+			</Empty.Header>
+		</Empty.Root>
+	{/if}
 
 	<AddManualTabAction />
 </div>
