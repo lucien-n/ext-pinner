@@ -17,7 +17,11 @@
 			{ctx.data.name}
 		</p>
 		<p class="text-xs text-muted-foreground italic">
-			{ctx.data.tabs.length} tab{ctx.data.tabs.length > 1 ? 's' : ''}
+			{#if ctx.data.tabs.length}
+				{ctx.data.tabs.length} tab{ctx.data.tabs.length > 1 ? 's' : ''}
+			{:else}
+				Empty
+			{/if}
 		</p>
 	</div>
 
