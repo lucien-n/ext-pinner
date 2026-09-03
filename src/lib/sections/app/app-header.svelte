@@ -2,15 +2,18 @@
 	import icon from '$lib/assets/favicon.svg';
 	import LinkPreview from '$lib/components/link-preview.svelte';
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
+	import { useUi } from '$lib/hooks/useUi.svelte';
 	import icons from '$lib/icons';
 	import { m } from '$lib/paraglide/messages';
-	import { buttonVariants } from '&/button';
+	import { Button, buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
 	import { SvelteURL } from 'svelte/reactivity';
 	import { slide } from 'svelte/transition';
 
-	let isOpen = $state(false);
 	const pinnedTabs = usePinnedTabs();
+	const ui = useUi();
+
+	let isOpen = $state(false);
 </script>
 
 <Collapsible.Root class="flex flex-col gap-1" bind:open={isOpen}>
@@ -20,26 +23,32 @@
 			<h1 class="text-lg font-semibold">Pinner</h1>
 		</div>
 
-		<Collapsible.Trigger
-			class={buttonVariants({
-				size: 'xs',
-				variant: 'ghost',
-				class: 'self-start text-xs text-muted-foreground'
-			})}
-			title={isOpen
-				? m.green_inclusive_bulldog_splash()
-				: pinnedTabs.current
-						.map(
-							(tab) =>
-								`${tab.url}${tab.mutedInfo?.muted ? ` - ${m.awake_noble_skunk_pause()}` : ''}`
-						)
-						.join('\n')}
-			disabled={!pinnedTabs.current.length}
-		>
-			{m.good_active_horse_dial({ count: pinnedTabs.current.length })}
+		<div class="flex items-center gap-1">
+			<Collapsible.Trigger
+				class={buttonVariants({
+					size: 'xs',
+					variant: 'ghost',
+					class: 'text-xs text-muted-foreground'
+				})}
+				title={isOpen
+					? m.green_inclusive_bulldog_splash()
+					: pinnedTabs.current
+							.map(
+								(tab) =>
+									`${tab.url}${tab.mutedInfo?.muted ? ` - ${m.awake_noble_skunk_pause()}` : ''}`
+							)
+							.join('\n')}
+				disabled={!pinnedTabs.current.length}
+			>
+				{m.good_active_horse_dial({ count: pinnedTabs.current.length })}
 
-			<icons.global.collapse />
-		</Collapsible.Trigger>
+				<icons.global.collapse />
+			</Collapsible.Trigger>
+
+			<Button size="icon-sm" variant="ghost" onclick={() => ui.openSettingsDialog()}>
+				<icons.global.settings />
+			</Button>
+		</div>
 	</div>
 
 	<Collapsible.Content forceMount class="px-3 text-muted-foreground">

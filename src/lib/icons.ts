@@ -2,6 +2,7 @@ import CollapseIcon from '@lucide/svelte/icons/chevrons-up-down';
 import DragIcon from '@lucide/svelte/icons/grip-vertical';
 import CollectionIcon from '@lucide/svelte/icons/library';
 import AddIcon from '@lucide/svelte/icons/plus';
+import SettingsIcon from '@lucide/svelte/icons/settings';
 import LoadIcon from '@lucide/svelte/icons/square-arrow-out-up-right';
 import DeleteIcon from '@lucide/svelte/icons/trash-2';
 import UndeaphenedIcon from '@lucide/svelte/icons/volume-2';
@@ -20,6 +21,7 @@ export default {
 		remove: RemoveIcon,
 		drag: DragIcon,
 		deaphened: DeaphenedIcon,
-		undeaphened: UndeaphenedIcon
+		undeaphened: UndeaphenedIcon,
+		settings: SettingsIcon
 	}
 };
