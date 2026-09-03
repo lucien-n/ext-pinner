@@ -6,6 +6,7 @@
 
 - `@inlang/paraglide-js` 2.18.2
 - Display empty placeholder for empty collections
+- Show muted icon for muted tabs in app header recap
 
 ### Changed
 
@@ -16,6 +17,8 @@
 ### Fixed
 
 - Empty add manual tab input on submit
+- Removed old pre-`LinkPreview` preview from app header recap
+- Updated `LinkPreview` styling to work with `items-center`
 
 ## [1.1.2] - 2026-09-03
 

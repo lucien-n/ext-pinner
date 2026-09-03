@@ -3,7 +3,7 @@
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import icons from '$lib/icons';
 	import { m } from '$lib/paraglide/messages';
-	import { Button, buttonVariants } from '&/button';
+	import { buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
 	import { SvelteURL } from 'svelte/reactivity';
 	import { slide } from 'svelte/transition';
@@ -47,20 +47,24 @@
 				<div {...props} transition:slide={{ duration: 200 }}>
 					{#each pinnedTabs.current as tab (tab.index + '-' + tab.url)}
 						<div class="flex items-center gap-1">
-							<LinkPreview url={new SvelteURL(tab.url)} variant="full" />
+							<LinkPreview
+								url={new SvelteURL(tab.url)}
+								variant="full"
+								onClick={(e) => {
+									e.preventDefault();
 
-							<Button
-								variant="link"
-								class="block w-full min-w-0 overflow-hidden p-0 text-left text-sm text-ellipsis whitespace-nowrap text-inherit"
-								title={tab.url}
-								onclick={async () => {
-									await chrome.tabs.highlight({
+									chrome.tabs.highlight({
 										tabs: [tab.index]
 									});
 								}}
-							>
-								{tab.url}
-							</Button>
+							/>
+
+							{#if tab.mutedInfo?.muted}
+								<icons.global.deaphened
+									class="size-4 text-muted-foreground"
+									title={m.awake_noble_skunk_pause()}
+								/>
+							{/if}
 						</div>
 					{/each}
 				</div>

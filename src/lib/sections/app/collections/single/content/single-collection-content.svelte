@@ -62,7 +62,7 @@
 		>
 			{#each items as item (item.id)}
 				<div class="flex min-w-0 items-center justify-between" transition:slide>
-					<div class="flex gap-1">
+					<div class="flex items-center gap-1">
 						<LinkPreview
 							url={new SvelteURL(item.url)}
 							variant={shouldShowFullUrls ? 'full' : 'short'}
