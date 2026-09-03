@@ -4,6 +4,7 @@
 
 ### Added
 
+- `@inlang/paraglide-js` 2.18.2
 - Display empty placeholder for empty collections
 
 ### Changed

@@ -1,3 +1,4 @@
+import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
 import adapter from 'sveltekit-adapter-chrome-extension';
@@ -18,15 +19,14 @@ export default defineConfig({
 			// See https://svelte.dev/docs/kit/adapters for more information about adapters.
 			adapter: adapter({}),
 			appDir: 'app',
+			alias: { '&': './src/lib/shadcn/ui' }
+		}),
 
-			alias: {
-				'&': './src/lib/shadcn/ui'
-			}
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			emitTsDeclarations: true
 		})
 	],
-	server: {
-		watch: {
-			ignored: ['**/build/**']
-		}
-	}
+	server: { watch: { ignored: ['**/build/**'] } }
 });
