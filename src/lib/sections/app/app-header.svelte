@@ -1,4 +1,5 @@
 <script lang="ts">
+	import icon from '$lib/assets/favicon.svg';
 	import LinkPreview from '$lib/components/link-preview.svelte';
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import icons from '$lib/icons';
@@ -15,7 +16,7 @@
 <Collapsible.Root class="flex flex-col gap-1" bind:open={isOpen}>
 	<div class="flex items-center justify-between">
 		<div class="flex items-center gap-2">
-			<img src="icon.svg" alt="Pinner icon" class="w-4" />
+			<img src={icon} alt="Pinner icon" class="w-4" />
 			<h1 class="text-lg font-semibold">Pinner</h1>
 		</div>
 
