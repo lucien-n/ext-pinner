@@ -2,6 +2,7 @@
 	import LinkPreview from '$lib/components/link-preview.svelte';
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import icons from '$lib/icons';
+	import { m } from '$lib/paraglide/messages';
 	import { Button, buttonVariants } from '&/button';
 	import * as Collapsible from '&/collapsible';
 	import { SvelteURL } from 'svelte/reactivity';
@@ -25,15 +26,16 @@
 				class: 'self-start text-xs text-muted-foreground'
 			})}
 			title={isOpen
-				? 'Collapse'
+				? m.green_inclusive_bulldog_splash()
 				: pinnedTabs.current
-						.map((tab) => `${tab.url}${tab.mutedInfo?.muted ? ' - Muted' : ''}`)
+						.map(
+							(tab) =>
+								`${tab.url}${tab.mutedInfo?.muted ? ` - ${m.awake_noble_skunk_pause()}` : ''}`
+						)
 						.join('\n')}
 			disabled={!pinnedTabs.current.length}
 		>
-			{pinnedTabs.current.length || 'No'} currently pinned tab{pinnedTabs.current.length > 1
-				? 's'
-				: ''}
+			{m.good_active_horse_dial({ count: pinnedTabs.current.length })}
 
 			<icons.global.collapse />
 		</Collapsible.Trigger>

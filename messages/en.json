@@ -5,5 +5,23 @@
 	"best_hour_fly_earn": "(overwriting an existing collection)",
 	"late_orange_squid_quell": "My Collection",
 	"large_sharp_myna_nail": "Overwriting collection \"{name}\"",
-	"extra_cozy_cuckoo_emerge": "Save"
+	"extra_cozy_cuckoo_emerge": "Save",
+	"awake_noble_skunk_pause": "Muted",
+	"green_inclusive_bulldog_splash": "Collapse",
+	"good_active_horse_dial": [
+		{
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
+			"match": {
+				"countPlural=zero": "No currently pinned tab",
+				"countPlural=one": "{count} currently pinned tab",
+				"countPlural=other": "{count} currently pinned tabs"
+			}
+		}
+	]
 }
