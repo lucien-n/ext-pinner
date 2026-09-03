@@ -38,10 +38,5 @@
 				<Button onclick={() => ui.focusCreateCollection?.()}>Create Collection</Button>
 			</div>
 		</Empty.Content>
-		<!-- <Button variant="link" class="text-muted-foreground" size="sm">
-				<a href="#/">
-					Learn More <ArrowUpRightIcon class="inline" />
-				</a>
-			</Button> -->
 	</Empty.Root>
 {/if}
