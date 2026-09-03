@@ -1,4 +1,61 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from fr!"
+	"fuzzy_only_cod_grow": "Enregistrer la collection",
+	"best_hour_fly_earn": "(écrase une collection existante)",
+	"late_orange_squid_quell": "Ma collection",
+	"large_sharp_myna_nail": "Écrasement de la collection \"{name}\"",
+	"extra_cozy_cuckoo_emerge": "Enregistrer",
+	"awake_noble_skunk_pause": "Muet",
+	"green_inclusive_bulldog_splash": "Réduire",
+	"good_active_horse_dial": [
+		{
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
+			"match": {
+				"countPlural=one": "{count} onglet épinglé",
+				"countPlural=other": "{count} onglets épinglés"
+			}
+		}
+	],
+	"same_big_jan_bump": "Icône de {hostname}",
+	"soft_royal_mantis_affirm": "Aucune collection pour l'instant",
+	"level_best_tern_laugh": "Créer une collection",
+	"misty_funny_jan_pause": [
+		{
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
+			"match": {
+				"countPlural=zero": "Vide",
+				"countPlural=one": "{count} onglet",
+				"countPlural=other": "{count} onglets"
+			}
+		}
+	],
+	"spare_calm_parrot_relish": "Vous n'avez pas encore créé de collection. Créez-en une pour commencer.",
+	"steep_wacky_maggot_hurl": "Oui",
+	"strong_wacky_manatee_achieve": "Annuler",
+	"home_small_cowfish_grin": "Annuler la suppression de la collection",
+	"super_icy_baboon_compose": "Confirmer la suppression de la collection (irréversible)",
+	"livid_every_dragonfly_rise": "Afficher les URLs complètes",
+	"clear_gaudy_goldfish_pick": "Supprimer la collection",
+	"cozy_long_oryx_type": "Êtes-vous sûr ?",
+	"sharp_wacky_giraffe_hurl": "Charger la collection — remplace les onglets actuellement épinglés",
+	"pink_awake_yak_race": "Ajouter",
+	"bland_level_crocodile_mix": "Réactiver le son de l'onglet",
+	"busy_quaint_monkey_clip": "Retirer l'onglet de la collection",
+	"smart_loved_mongoose_dart": "Affiche les URLs complètes telles qu'enregistrées",
+	"only_moving_samuel_harbor": "Couper le son de l'onglet",
+	"every_same_puffin_empower": "Active ou désactive le chargement automatique de cette collection à chaque nouvelle session de navigateur",
+	"stout_broad_weasel_pull": "Chargement auto",
+	"trick_that_camel_explore": "https://monurl.com ou monurl.com"
 }
