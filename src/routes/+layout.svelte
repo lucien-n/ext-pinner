@@ -19,7 +19,7 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-<div class="flex h-[400] w-md min-w-md flex-col gap-1 bg-background p-2">
+<div class="flex min-h-100 w-md min-w-md flex-col gap-1 bg-background p-2">
 	<div class="flex flex-col gap-1 px-5 pt-1">
 		<AppHeader />
 	</div>
