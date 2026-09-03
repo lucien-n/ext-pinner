@@ -10,6 +10,7 @@
 
 - Add urls to a collection without specifying protocol (defaults to https)
 - Animate collection tab addition/removal
+- Display "Empty" instead of "0 tab" for empty collections
 
 ### Fixed
 
