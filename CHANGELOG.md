@@ -1,11 +1,5 @@
 # Changelog
 
-## [1.1.2] - 2026-09-03
-
-### Added
-
-- [x] Release workflow creates a release based on a tag and its associated changelog entry
-
 ## [1.1.1] - 2026-09-03
 
 ### Added
@@ -14,6 +8,7 @@
 - [x] Persist muted state
 - [x] Show tab count in folded state
 - [x] Create collection on Enter pressed while input focused
+- [x] Release workflow creates a release based on a tag and its associated changelog entry
 
 ### Fixed
 
@@ -26,5 +21,4 @@
 
 _Initial release._
 
-[1.1.2]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.2
 [1.1.1]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.1
