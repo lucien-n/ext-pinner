@@ -1,4 +1,9 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"hello_world": "Hello, {name} from en!"
+	"hello_world": "Hello, {name} from en!",
+	"fuzzy_only_cod_grow": "Save collection",
+	"best_hour_fly_earn": "(overwriting an existing collection)",
+	"late_orange_squid_quell": "My Collection",
+	"large_sharp_myna_nail": "Overwriting collection \"{name}\"",
+	"extra_cozy_cuckoo_emerge": "Save"
 }

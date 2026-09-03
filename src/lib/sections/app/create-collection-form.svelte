@@ -3,6 +3,7 @@
 	import { usePinner } from '$lib/hooks/usePinner.svelte.js';
 	import { useUi } from '$lib/hooks/useUi.svelte';
 	import icons from '$lib/icons';
+	import { m } from '$lib/paraglide/messages';
 	import { Button } from '&/button';
 	import { Input } from '&/input';
 	import { slide } from 'svelte/transition';
@@ -47,7 +48,7 @@
 					class="absolute left-3 my-auto size-3.5 h-full text-muted-foreground"
 				/>
 				<Input
-					placeholder="My Collection"
+					placeholder={m.late_orange_squid_quell()}
 					name="new-collection-name"
 					class="bg-card pl-8 text-sm placeholder:text-xs"
 					oninput={() => (error = '')}
@@ -66,16 +67,16 @@
 			{/if}
 		</div>
 		<Button
-			title="Save collection{existingCollection ? ' (overwriting an existing collection)' : ''}"
+			title="{m.fuzzy_only_cod_grow()}{existingCollection ? ` ${m.best_hour_fly_earn()}` : ''}"
 			onclick={handleSaveCollection}
 		>
-			Save
+			{m.extra_cozy_cuckoo_emerge()}
 		</Button>
 	</div>
 
 	{#if existingCollection}
 		<p class="text-sm font-semibold text-amber-500" transition:slide>
-			Overwriting collection "{existingCollection.name}"
+			{m.large_sharp_myna_nail({ name: existingCollection.name })}
 		</p>
 	{/if}
 </div>
