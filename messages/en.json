@@ -27,5 +27,21 @@
 	"same_big_jan_bump": "{hostname}'s icon",
 	"soft_royal_mantis_affirm": "No Collections Yet",
 	"level_best_tern_laugh": "Create Collection",
+	"misty_funny_jan_pause": [
+		{
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
+			"match": {
+				"countPlural=zero": "Empty",
+				"countPlural=one": "{count} tab",
+				"countPlural=other": "{count} tabs"
+			}
+		}
+	],
 	"spare_calm_parrot_relish": "You haven't created any collections yet. Get started by creating your first collection."
 }

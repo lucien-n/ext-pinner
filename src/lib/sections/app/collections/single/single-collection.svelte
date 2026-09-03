@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages';
 	import * as Accordion from '&/accordion';
 	import { slide } from 'svelte/transition';
 	import SingleCollectionContent from './content/single-collection-content.svelte';
@@ -17,11 +18,7 @@
 			{ctx.data.name}
 		</p>
 		<p class="text-xs text-muted-foreground italic">
-			{#if ctx.data.tabs.length}
-				{ctx.data.tabs.length} tab{ctx.data.tabs.length > 1 ? 's' : ''}
-			{:else}
-				Empty
-			{/if}
+			{m.misty_funny_jan_pause({ count: ctx.data.tabs.length })}
 		</p>
 	</div>
 
