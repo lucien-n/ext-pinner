@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages';
 	import { Button } from '&/button';
 	import type { SvelteURL } from 'svelte/reactivity';
 
@@ -13,7 +14,7 @@
 
 <img
 	src="https://www.google.com/s2/favicons?domain={url.hostname}&sz=32"
-	alt="{url.hostname}'s icon"
+	alt={m.same_big_jan_bump({ hostname: url.hostname })}
 	class="size-4"
 />
 

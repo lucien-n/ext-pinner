@@ -23,5 +23,6 @@
 				"countPlural=other": "{count} currently pinned tabs"
 			}
 		}
-	]
+	],
+	"same_big_jan_bump": "{hostname}'s icon"
 }
