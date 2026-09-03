@@ -41,6 +41,14 @@ export function installChromeMock() {
 			// @ts-expect-error dev-only mock
 			async create(opts: unknown) {
 				console.log('[mock] chrome.tabs.create', opts);
+			},
+			// @ts-expect-error dev-only mock
+			onUpdated: {
+				addListener: () => undefined
+			},
+			// @ts-expect-error dev-only mock
+			onRemoved: {
+				addListener: () => undefined
 			}
 		},
 		runtime: {

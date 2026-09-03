@@ -16,6 +16,7 @@
 		>
 			{ctx.data.name}
 		</p>
+		<p class="text-xs text-muted-foreground">({ctx.data.tabs.length})</p>
 	</div>
 
 	<div class="flex items-center gap-1">
