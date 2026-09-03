@@ -1,5 +1,6 @@
 <script lang="ts">
 	import icons from '$lib/icons';
+	import { m } from '$lib/paraglide/messages';
 	import { cn } from '$lib/shadcn/utils.js';
 	import { Button } from '&/button';
 	import { Input } from '&/input';
@@ -47,7 +48,7 @@
 			'w-0 min-w-0 border-0 p-0 opacity-0 transition-all duration-300 ease-in-out',
 			isAddShown && 'w-full! border! p-2! opacity-100!'
 		)}
-		placeholder="https://myurl.com or myurl.com"
+		placeholder={m.trick_that_camel_explore()}
 		type="url"
 		spellcheck="false"
 		onkeydown={(e) => {
@@ -62,9 +63,11 @@
 		disabled={isAddShown && !isNewTabUrlValid}
 	>
 		<icons.global.add />
-		Add
+		{m.pink_awake_yak_race()}
 	</Button>
 	{#if isAddShown}
-		<Button variant="secondary" onclick={() => (isAddShown = false)}>Cancel</Button>
+		<Button variant="secondary" onclick={() => (isAddShown = false)}>
+			{m.strong_wacky_manatee_achieve()}
+		</Button>
 	{/if}
 </div>
