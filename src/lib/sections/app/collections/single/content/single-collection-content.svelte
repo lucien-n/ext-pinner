@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LinkPreview from '$lib/components/link-preview.svelte';
 	import icons from '$lib/icons';
+	import { m } from '$lib/paraglide/messages';
 	import { Button, buttonVariants } from '&/button';
 	import * as ButtonGroup from '&/button-group';
 	import { Checkbox } from '&/checkbox';
@@ -34,14 +35,14 @@
 <div class="flex flex-col gap-1 px-2">
 	<div class="flex justify-between">
 		<p class="text-sm font-medium">
-			{ctx.data.tabs.length} tab{ctx.data.tabs.length > 1 ? 's' : ''}
+			{m.misty_funny_jan_pause({ count: ctx.data.tabs.length })}
 		</p>
 
 		<Label
 			class={buttonVariants({ size: 'xs', variant: 'ghost' })}
-			title="Shows complete urls as they were saved"
+			title={m.smart_loved_mongoose_dart()}
 		>
-			Show full urls
+			{m.livid_every_dragonfly_rise()}
 			<Checkbox bind:checked={shouldShowFullUrls} />
 		</Label>
 	</div>
@@ -74,7 +75,7 @@
 							<Button
 								size="icon-sm"
 								variant="ghost"
-								title={item.isMuted ? 'Unmute tab' : 'Mute tab'}
+								title={item.isMuted ? m.bland_level_crocodile_mix() : m.only_moving_samuel_harbor()}
 								onclick={() => ctx.toggleIsMuted(item.url)}
 							>
 								{#if item.isMuted}
@@ -86,7 +87,7 @@
 							<Button
 								size="icon-sm"
 								variant="ghost"
-								title="Remove tab from collection"
+								title={m.busy_quaint_monkey_clip()}
 								onclick={() => ctx.remove(item.url)}
 							>
 								<icons.global.remove />
