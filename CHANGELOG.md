@@ -1,9 +1,10 @@
 # Changelog
 
-## [1.1.3] - YYYY-MM-DD
+## [1.1.3] - 2026-09-03
 
 ### Added
 
+- New settings dialog accessible via the gear icon in the app header
 - Add english translation
 - Add french translation
 - Add `@inlang/paraglide-js` 2.18.2
