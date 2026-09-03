@@ -2,6 +2,7 @@
 	import { usePinner } from '$lib/hooks/usePinner.svelte.js';
 	import { useUi } from '$lib/hooks/useUi.svelte';
 	import icons from '$lib/icons';
+	import { m } from '$lib/paraglide/messages';
 	import PinnerCollectionCtx from '$lib/sections/app/collections/single/pinner-collection-ctx.svelte';
 	import SingleCollection from '$lib/sections/app/collections/single/single-collection.svelte';
 	import * as Accordion from '&/accordion';
@@ -28,14 +29,14 @@
 			<Empty.Media variant="icon">
 				<icons.app.collection />
 			</Empty.Media>
-			<Empty.Title>No Collections Yet</Empty.Title>
+			<Empty.Title>{m.soft_royal_mantis_affirm()}</Empty.Title>
 			<Empty.Description>
-				You haven't created any collections yet. Get started by creating your first collection.
+				{m.spare_calm_parrot_relish()}
 			</Empty.Description>
 		</Empty.Header>
 		<Empty.Content>
 			<div class="flex gap-2">
-				<Button onclick={() => ui.focusCreateCollection?.()}>Create Collection</Button>
+				<Button onclick={() => ui.focusCreateCollection?.()}>{m.level_best_tern_laugh()}</Button>
 			</div>
 		</Empty.Content>
 	</Empty.Root>
