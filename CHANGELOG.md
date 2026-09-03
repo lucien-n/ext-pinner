@@ -4,7 +4,7 @@
 
 ### Added
 
-- Build and associate
+- Build and auto publish extension to the Chrome Web Store workflow
 
 ## [1.1.1] - 2026-09-03
 
