@@ -19,6 +19,7 @@
 - Empty add manual tab input on submit
 - Removed old pre-`LinkPreview` preview from app header recap
 - Updated `LinkPreview` styling to work with `items-center`
+- Call `updatedPinnedTab` on any tabs update
 
 ## [1.1.2] - 2026-09-03
 

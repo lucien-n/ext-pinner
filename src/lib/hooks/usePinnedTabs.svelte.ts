@@ -16,9 +16,7 @@ export function usePinnedTabs() {
 		updatePinnedTabs();
 	});
 
-	chrome.tabs.onUpdated.addListener((_tabId, changeInfo) => {
-		if (changeInfo.pinned === undefined) return;
-
+	chrome.tabs.onUpdated.addListener(() => {
 		updatePinnedTabs();
 	});
 
