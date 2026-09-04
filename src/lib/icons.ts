@@ -1,5 +1,6 @@
 import CollapseIcon from '@lucide/svelte/icons/chevrons-up-down';
 import DownloadIcon from '@lucide/svelte/icons/download';
+import ExternalLinkIcon from '@lucide/svelte/icons/external-link';
 import DragIcon from '@lucide/svelte/icons/grip-vertical';
 import CollectionIcon from '@lucide/svelte/icons/library';
 import AddIcon from '@lucide/svelte/icons/plus';
@@ -24,6 +25,7 @@ export default {
 		deaphened: DeaphenedIcon,
 		undeaphened: UndeaphenedIcon,
 		settings: SettingsIcon,
-		download: DownloadIcon
+		download: DownloadIcon,
+		externallink: ExternalLinkIcon
 	}
 };

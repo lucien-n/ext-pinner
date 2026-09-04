@@ -70,6 +70,7 @@
 	"front_grassy_wasp_sprout": "An error occured while importing collections",
 	"agent_mild_pug_foster": "Invalid imported file format",
 	"civil_dry_sheep_nurture": "Successfully imported collections",
-	"fair_last_marmot_surge": "Download collections",
-	"trite_spry_cowfish_pull": "Export"
+	"fair_last_marmot_surge": "Download",
+	"trite_spry_cowfish_pull": "Export",
+	"male_zippy_kudu_enrich": "Choose the export format"
 }

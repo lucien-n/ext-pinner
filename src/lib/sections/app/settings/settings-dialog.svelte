@@ -1,10 +1,12 @@
 <script lang="ts">
+	import icons from '$lib/icons';
 	import { m } from '$lib/paraglide/messages';
 	import { Button } from '&/button';
 	import * as Dialog from '&/dialog';
 	import { Label } from '&/label';
-	import ExportCollectionsButton from './export-collections-button.svelte';
-	import ImportCollectionsInput from './import-collections-input.svelte';
+	import ExportCollectionsAction from './export-collections-action.svelte';
+	import { PARSER_TYPE_SPECS } from './export/specs';
+	import ImportCollectionsAction from './import-collections-action.svelte';
 	import LanguageSelect from './language-select.svelte';
 
 	interface Props {
@@ -13,19 +15,6 @@
 	}
 
 	const { isOpen, onClose }: Props = $props();
-
-	const exportSupportedExtensions: { label: string; extensionUrl: string }[] = [
-		{
-			label: 'Pinner',
-			extensionUrl:
-				'https://chromewebstore.google.com/detail/pinner-persisted-pinned-t/aabmkfbjcdbcjdjkdjjdpminiffikhpc'
-		},
-		{
-			label: 'Save Pinned Tabs',
-			extensionUrl:
-				'https://chromewebstore.google.com/detail/save-pinned-tabs/anmidgajdonkgmmilbccfefkfieajakd'
-		}
-	];
 </script>
 
 <Dialog.Root
@@ -43,45 +32,54 @@
 		</Dialog.Header>
 
 		<div class="flex flex-col items-start gap-5">
-			<Label class="flex w-full flex-col items-start gap-2">
-				{m.top_trite_shad_chop()}
+			<section class="flex w-full flex-col items-start gap-1">
+				<Label for="language-select">
+					{m.top_trite_shad_chop()}
+				</Label>
 
-				<LanguageSelect />
-			</Label>
+				<LanguageSelect id="language-select" />
+			</section>
 
-			<Label class="flex w-full flex-col items-start gap-2">
-				<div class="flex flex-col gap-1">
+			<section class="flex w-full flex-col items-start gap-1">
+				<Label for="import-collections-action">
 					{m.away_teary_capybara_surge()}
-					<span class="text-xs text-muted-foreground">
-						{m.real_zany_toucan_flow()}
+				</Label>
 
-						{#each exportSupportedExtensions as ext, idx (ext.extensionUrl)}
-							{#if idx < exportSupportedExtensions.length - 1 && idx > 0}
-								,
-							{:else if idx === exportSupportedExtensions.length - 1}
-								&nbsp;&
-							{/if}
+				<p class="text-xs text-muted-foreground">
+					{m.real_zany_toucan_flow()}
 
-							<Button
-								variant="link"
-								class="h-5 p-0 text-xs text-inherit"
-								href={ext.extensionUrl}
-								target="_blank"
-							>
-								{ext.label}
-							</Button>
-						{/each}
-					</span>
-				</div>
+					{#each Object.values(PARSER_TYPE_SPECS) as opt, idx (opt.extensionUrl)}
+						{#if idx < Object.values(PARSER_TYPE_SPECS).length - 1 && idx > 0}
+							,
+						{:else if idx === Object.values(PARSER_TYPE_SPECS).length - 1}
+							&nbsp;&
+						{/if}
 
-				<ImportCollectionsInput />
-			</Label>
+						<Button
+							variant="link"
+							class="h-5 gap-0.5 p-0 text-xs text-inherit"
+							href={opt.extensionUrl}
+							target="_blank"
+						>
+							{opt.label}
 
-			<Label class="flex w-full flex-col items-start gap-2">
-				{m.trite_spry_cowfish_pull()}
+							<icons.global.externallink class="size-2" />
+						</Button>
+					{/each}
+				</p>
 
-				<ExportCollectionsButton />
-			</Label>
+				<ImportCollectionsAction id="import-collections-action" />
+			</section>
+
+			<section class="flex w-full flex-col items-start gap-1">
+				<Label for="export-collections-action">
+					{m.trite_spry_cowfish_pull()}
+				</Label>
+
+				<p class="text-xs text-muted-foreground">{m.male_zippy_kudu_enrich()}</p>
+
+				<ExportCollectionsAction id="export-collections-action" />
+			</section>
 		</div>
 
 		<Dialog.Footer>

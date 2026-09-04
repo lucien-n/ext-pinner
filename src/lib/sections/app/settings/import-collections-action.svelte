@@ -8,6 +8,12 @@
 	import type { PinnerCollectionData } from '../collections/schema';
 	import { parsePinnerDataFromJSON } from './export/helpers';
 
+	interface Props {
+		id: string;
+	}
+
+	const { id }: Props = $props();
+
 	const pinner = usePinner();
 
 	let files = $state<FileList>();
@@ -85,7 +91,7 @@
 {/if}
 
 <div class="flex items-center gap-1">
-	<Input type="file" accept="application/json" bind:files />
+	<Input {id} type="file" accept="application/json" bind:files />
 
 	<Button
 		disabled={!files?.length || isImporting || isLoadingFiles}
