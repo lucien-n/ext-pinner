@@ -16,6 +16,10 @@
 - Every schema is now based on the pinner data schema
 - Clarified the extension description to more accurately describe its tab collection management features
 
+### Fixed
+
+- Stopped the flashing of the overwrite warning occuring when creating a brand new collection
+
 ## [1.1.3] - 2026-09-03
 
 ### Added
