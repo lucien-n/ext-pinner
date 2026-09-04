@@ -2,10 +2,14 @@
 
 ## [1.1.4] - 2026-09-04
 
-### Changed
+### Added
 
 - Add english translation for `SettingsDialog`
 - Add french translation for `SettingsDialog`
+
+### Changed
+
+- Every schema is now based on the pinner data schema
 - Clarified the extension description to more accurately describe its tab collection management features.
 
 ## [1.1.3] - 2026-09-03
