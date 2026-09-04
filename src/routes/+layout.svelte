@@ -9,6 +9,7 @@
 	import AppHeader from '$lib/sections/app/app-header.svelte';
 	import SettingsDialog from '$lib/sections/app/settings/settings-dialog.svelte';
 	import { ScrollArea } from '&/scroll-area';
+	import { Toaster } from '&/sonner';
 	import './layout.css';
 
 	const { children } = $props();
@@ -21,6 +22,8 @@
 </script>
 
 <svelte:head><link rel="icon" href={icon} /></svelte:head>
+
+<Toaster richColors theme="light" />
 
 <div class="relative flex min-h-100 w-md min-w-md flex-col gap-1 bg-background p-2">
 	<div class="flex flex-col gap-1 px-5 pt-1"><AppHeader /></div>

@@ -4,6 +4,7 @@
 
 ### Added
 
+- Import collections from Pinner or Save Pinned Tabs
 - Add english translation for `SettingsDialog`
 - Add french translation for `SettingsDialog`
 

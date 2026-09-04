@@ -1,27 +1,23 @@
-import { LATEST_PINNER_SCHEMA_VERSION, type PinnerData } from '$lib/pinner-storage';
+import { type PinnerData } from '$lib/pinner-storage';
 import type { ExportSchema } from './schemas';
 import { ParserType } from './types';
 
 export const parsers: {
 	[Parser in ParserType]: {
-		fromJSON: (data: ExportSchema<Parser>) => PinnerData;
+		fromJSON: (data: ExportSchema<Parser>) => PinnerData['collections'];
 		toJSON: (data: PinnerData) => ExportSchema<Parser>;
 	};
 } = {
 	[ParserType.Pinner]: {
 		fromJSON: (data) => {
-			return {
-				autoloadId: data.autoloaded_id,
-				collections: data.collections.map((c) => ({
-					id: c.id,
-					name: c.name,
-					tabs: c.tabs.map((t) => ({
-						url: t.url,
-						isMuted: t.is_muted
-					}))
-				})),
-				version: LATEST_PINNER_SCHEMA_VERSION
-			};
+			return data.collections.map((c) => ({
+				id: c.id,
+				name: c.name,
+				tabs: c.tabs.map((t) => ({
+					url: t.url,
+					isMuted: t.is_muted
+				}))
+			}));
 		},
 		toJSON(data) {
 			return {
@@ -39,26 +35,14 @@ export const parsers: {
 	},
 	[ParserType.SavePinnedTabs]: {
 		fromJSON: (data) => {
-			let autoloadId = null;
-			for (const [id, collection] of Object.entries(data)) {
-				if (!collection.autoload) continue;
-
-				autoloadId = id;
-				break;
-			}
-
-			return {
-				autoloadId,
-				collections: Object.entries(data).map(([id, c]) => ({
-					id,
-					name: c.set_name,
-					tabs: c.tabs.map((url) => ({
-						url,
-						isMuted: false
-					}))
-				})),
-				version: LATEST_PINNER_SCHEMA_VERSION
-			};
+			return Object.entries(data).map(([id, c]) => ({
+				id,
+				name: c.set_name,
+				tabs: c.tabs.map((url) => ({
+					url,
+					isMuted: false
+				}))
+			}));
 		},
 		toJSON: (data) => {
 			return Object.fromEntries(

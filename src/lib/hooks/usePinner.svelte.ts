@@ -17,6 +17,7 @@ import * as v from 'valibot';
 export interface UsePinnerReturn {
 	save: (input: CreatePinnerCollection) => Promise<string | undefined>;
 	delete: (id: string) => Promise<void>;
+	import: (collection: PinnerCollectionData) => void;
 	setAutoloadId: (newAutoloadId: string | null) => Promise<void>;
 	getByName: (name: string) => PinnerCollectionData | undefined;
 	autoloadId: PinnerData['autoloadId'];
@@ -108,11 +109,21 @@ export function usePinner(): UsePinnerReturn {
 
 			await saveData();
 		},
-		async delete(id: string) {
+		async delete(id) {
 			data.collections = data.collections.filter((c) => c.id !== id);
 
 			if (id === data.autoloadId) {
 				data.autoloadId = null;
+			}
+
+			await saveData();
+		},
+		async import(collection) {
+			const existingCollection = getCollectionByName(collection.name);
+			if (existingCollection) {
+				this.save(collection);
+			} else {
+				data.collections.push(collection);
 			}
 
 			await saveData();
