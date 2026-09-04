@@ -12,6 +12,8 @@ Mark a collection as autoloaded so it automatically opens its urls as pinned tab
 
 - sveltekit
 - shadcn-svelte
+- love ❤
+- no llms 🤓
 
 ## Links
 
