@@ -10,6 +10,8 @@
 	import SettingsDialog from '$lib/sections/app/settings/settings-dialog.svelte';
 	import { ScrollArea } from '&/scroll-area';
 	import { Toaster } from '&/sonner';
+	import { mode, ModeWatcher } from 'mode-watcher';
+	import { slide } from 'svelte/transition';
 	import './layout.css';
 
 	const { children } = $props();
@@ -25,11 +27,18 @@
 
 <Toaster richColors theme="light" />
 
-<div class="relative flex min-h-100 w-md min-w-md flex-col gap-1 bg-background p-2">
-	<div class="flex flex-col gap-1 px-5 pt-1"><AppHeader /></div>
-	<ScrollArea type="scroll" class="h-full p-3 pt-0">{@render children()}</ScrollArea>
+<ModeWatcher />
 
-	{#if ui.isSettingsDialogOpen}
-		<SettingsDialog isOpen={ui.isSettingsDialogOpen} onClose={() => ui.closeSettingsDialog()} />
-	{/if}
-</div>
+{#key mode.current}
+	<div
+		class="relative flex min-h-100 w-md min-w-md flex-col gap-1 bg-background p-2"
+		in:slide={{ duration: 200 }}
+	>
+		<div class="flex flex-col gap-1 px-5 pt-1"><AppHeader /></div>
+		<ScrollArea type="scroll" class="h-full p-3 pt-0">{@render children()}</ScrollArea>
+
+		{#if ui.isSettingsDialogOpen}
+			<SettingsDialog isOpen={ui.isSettingsDialogOpen} onClose={() => ui.closeSettingsDialog()} />
+		{/if}
+	</div>
+{/key}

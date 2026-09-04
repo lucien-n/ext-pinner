@@ -1,6 +1,7 @@
 <script lang="ts">
 	import icon from '$lib/assets/favicon.svg';
 	import LinkPreview from '$lib/components/link-preview.svelte';
+	import ToggleModeButton from '$lib/components/toggle-mode-button.svelte';
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import { useUi } from '$lib/hooks/useUi.svelte';
 	import icons from '$lib/icons';
@@ -44,6 +45,8 @@
 
 				<icons.global.collapse />
 			</Collapsible.Trigger>
+
+			<ToggleModeButton />
 
 			<Button size="icon-sm" variant="ghost" onclick={() => ui.openSettingsDialog()}>
 				<icons.global.settings />

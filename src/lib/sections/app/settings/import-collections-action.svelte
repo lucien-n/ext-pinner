@@ -90,7 +90,7 @@
 	</p>
 {/if}
 
-<div class="flex items-center gap-1">
+<div class="flex w-full items-center gap-1">
 	<Input {id} type="file" accept="application/json" bind:files />
 
 	<Button
