@@ -1,6 +1,6 @@
 {
 	"name": "Pinner - Persisted pinned tabs",
-	"description": "Organize your pinned tabs into named collections. Save, restore, and automatically load them whenever you need.",
+	"description": "Organize your pinned tabs into named collections. Save, restore, and automatically load them whenever you need. Also keeps the muted state of a tab",
 	"version": "1.1.2",
 	"manifest_version": 3,
 	"action": {
