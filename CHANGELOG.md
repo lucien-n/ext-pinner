@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.4] - 2026-09-04
+
+### Changed
+
+- Improved the extension description to better and more clearly communicate its functionality
+
 ## [1.1.3] - 2026-09-03
 
 ### Added
@@ -51,6 +57,7 @@
 
 _Initial release._
 
+[1.1.4]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.4
 [1.1.3]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.3
 [1.1.2]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.2
 [1.1.1]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.1
