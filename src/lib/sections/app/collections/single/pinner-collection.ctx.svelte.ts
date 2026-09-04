@@ -1,7 +1,7 @@
 import { replacePinnedTabs } from '$lib/helpers.js';
 import { usePinner, type UsePinnerReturn } from '$lib/hooks/usePinner.svelte.js';
 import { getContext, setContext } from 'svelte';
-import type { PinnerCollectionData, TabData } from '../schema.js';
+import type { PinnerCollectionData } from '../schema.js';
 
 class PinnerCollectionCtx {
 	data = $state<PinnerCollectionData>()!;
@@ -28,7 +28,7 @@ class PinnerCollectionCtx {
 		return replacePinnedTabs(this.data.tabs);
 	}
 
-	add(tab: TabData) {
+	add(tab: PinnerCollectionData['tabs'][number]) {
 		// todo: adding a tab with the exact same url as an existing one will cause issues
 		// fix by introducing tab ids
 		this.data.tabs.push(tab);
@@ -43,7 +43,7 @@ class PinnerCollectionCtx {
 		this.save();
 	}
 
-	reorder(newTabs: TabData[]) {
+	reorder(newTabs: PinnerCollectionData['tabs']) {
 		this.data.tabs = newTabs;
 
 		this.save();

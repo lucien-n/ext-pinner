@@ -10,11 +10,11 @@
 	import { dragHandle, dragHandleZone, type DndEvent } from 'svelte-dnd-action';
 	import { SvelteURL } from 'svelte/reactivity';
 	import { slide } from 'svelte/transition';
-	import type { TabData } from '../../schema';
+	import type { PinnerCollectionData } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
 	import AddManualTabAction from './add-manual-tab-action.svelte';
 
-	type TypeDataWithDndId = TabData & { id: string };
+	type TypeDataWithDndId = PinnerCollectionData['tabs'][number] & { id: string };
 
 	const ctx = getPinnerCollectionCtx();
 

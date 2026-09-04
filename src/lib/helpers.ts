@@ -1,6 +1,6 @@
-import type { TabData } from './sections/app/collections/schema';
+import type { PinnerCollectionData } from './sections/app/collections/schema';
 
-export async function replacePinnedTabs(tabs: TabData[]) {
+export async function replacePinnedTabs(tabs: PinnerCollectionData['tabs']) {
 	const pinnedTabs = await chrome.tabs.query({ pinned: true });
 	for (const pinnedTab of pinnedTabs) {
 		if (!pinnedTab.id) continue;
