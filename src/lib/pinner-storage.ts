@@ -2,13 +2,13 @@ import * as v from 'valibot';
 
 const MIN_SCHEMA_VERSION = 0 as const;
 // todo: bump when adding a new schema version
-const LATEST_SCHEMA_VERSION = 1 as const;
+export const LATEST_PINNER_SCHEMA_VERSION = 1 as const;
 
 const versionField = v.pipe(
 	v.number(),
 	v.integer(),
 	v.minValue(MIN_SCHEMA_VERSION),
-	v.maxValue(LATEST_SCHEMA_VERSION)
+	v.maxValue(LATEST_PINNER_SCHEMA_VERSION)
 );
 
 const schemas = {
@@ -58,13 +58,16 @@ type SchemaOutputMap = {
 	[Version in SchemaVersions]: v.InferOutput<(typeof schemas)[Version]>;
 };
 
-export type PinnerData = SchemaOutputMap[typeof LATEST_SCHEMA_VERSION];
+export type PinnerData = SchemaOutputMap[typeof LATEST_PINNER_SCHEMA_VERSION];
 
-export const pinnerSchema = schemas[LATEST_SCHEMA_VERSION];
+export const pinnerSchema = schemas[LATEST_PINNER_SCHEMA_VERSION];
 
 const nextVersionMap = {
 	0: 1
-} as const satisfies Record<Exclude<SchemaVersions, typeof LATEST_SCHEMA_VERSION>, SchemaVersions>;
+} as const satisfies Record<
+	Exclude<SchemaVersions, typeof LATEST_PINNER_SCHEMA_VERSION>,
+	SchemaVersions
+>;
 type NextVersionMap = typeof nextVersionMap;
 
 type Migration<From extends keyof NextVersionMap> = {
@@ -147,7 +150,7 @@ export async function loadPinnerData(): Promise<PinnerData | undefined> {
 		version = nextVersionMap[migratableVersion];
 	}
 
-	const result = v.safeParse(schemas[LATEST_SCHEMA_VERSION], data);
+	const result = v.safeParse(schemas[LATEST_PINNER_SCHEMA_VERSION], data);
 
 	if (!result.success) {
 		console.error('failed to validate migrated pinner data');
