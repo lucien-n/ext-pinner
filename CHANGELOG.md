@@ -4,6 +4,8 @@
 
 ### Changed
 
+- Add english translation for `SettingsDialog`
+- Add french translation for `SettingsDialog`
 - Clarified the extension description to more accurately describe its tab collection management features.
 
 ## [1.1.3] - 2026-09-03
