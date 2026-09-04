@@ -4,6 +4,7 @@
 
 ### Added
 
+- Animate collections accordion items
 - Add appearance mode button in app header
 - Add description section for import/export feature
 - Export collections for Pinner or Save Pinned Tabs
