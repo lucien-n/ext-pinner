@@ -3,6 +3,7 @@
 	import { Button } from '&/button';
 	import * as Dialog from '&/dialog';
 	import { Label } from '&/label';
+	import ExportCollectionsButton from './export-collections-button.svelte';
 	import ImportCollectionsInput from './import-collections-input.svelte';
 	import LanguageSelect from './language-select.svelte';
 
@@ -74,6 +75,12 @@
 				</div>
 
 				<ImportCollectionsInput />
+			</Label>
+
+			<Label class="flex w-full flex-col items-start gap-2">
+				{m.trite_spry_cowfish_pull()}
+
+				<ExportCollectionsButton />
 			</Label>
 		</div>
 

@@ -6,7 +6,7 @@
 	import { Input } from '&/input';
 	import { toast } from 'svelte-sonner';
 	import type { PinnerCollectionData } from '../collections/schema';
-	import { parsePinnerCollectionsFromJSON } from './export/helpers';
+	import { parsePinnerDataFromJSON } from './export/helpers';
 
 	const pinner = usePinner();
 
@@ -24,11 +24,11 @@
 		try {
 			const data = JSON.parse(await file.text());
 
-			const collections = parsePinnerCollectionsFromJSON(data);
-			if (!collections) {
+			const parsed = parsePinnerDataFromJSON(data);
+			if (!parsed) {
 				toast.error(m.agent_mild_pug_foster());
 			} else {
-				return collections;
+				return parsed.collections;
 			}
 		} catch {
 			toast.error(m.front_grassy_wasp_sprout());

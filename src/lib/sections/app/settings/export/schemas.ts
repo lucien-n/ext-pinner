@@ -27,4 +27,4 @@ export const parserSchemas = {
 	)
 } as const satisfies Record<ParserType, v.GenericSchema>;
 
-export type ExportSchema<Parser extends ParserType> = v.InferOutput<(typeof parserSchemas)[Parser]>;
+export type ParserSchema<Parser extends ParserType> = v.InferOutput<(typeof parserSchemas)[Parser]>;
