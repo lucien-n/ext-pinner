@@ -1,6 +1,6 @@
 {
 	"name": "Pinner - Persisted pinned tabs",
-	"description": "Organize your pinned tabs into named collections. Save, restore, and automatically load them whenever you need. Import from and export to popular similar extensions like Save Pinned Tabs. Also keeps the muted state of a tab",
+	"description": "Organize your pinned tabs into named collections. Save, restore,  automatically load, import and export them whenever you need.",
 	"version": "1.1.4",
 	"manifest_version": 3,
 	"action": {
