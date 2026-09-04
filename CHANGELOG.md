@@ -4,6 +4,7 @@
 
 ### Added
 
+- Add description section for import/export feature
 - Export collections for Pinner or Save Pinned Tabs
 - Import collections from Pinner or Save Pinned Tabs
 - Add english translation for `SettingsDialog`
@@ -12,7 +13,7 @@
 ### Changed
 
 - Every schema is now based on the pinner data schema
-- Clarified the extension description to more accurately describe its tab collection management features.
+- Clarified the extension description to more accurately describe its tab collection management features
 
 ## [1.1.3] - 2026-09-03
 
