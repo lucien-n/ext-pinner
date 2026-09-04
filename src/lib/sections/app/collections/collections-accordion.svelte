@@ -8,6 +8,7 @@
 	import * as Accordion from '&/accordion';
 	import { Button } from '&/button';
 	import * as Empty from '&/empty';
+	import { slide } from 'svelte/transition';
 
 	const pinner = usePinner();
 	const ui = useUi();
@@ -16,11 +17,13 @@
 {#if pinner.collections.length}
 	<Accordion.Root type="single" class="p-2">
 		{#each pinner.collections as collection (collection.id)}
-			<PinnerCollectionCtx data={collection}>
-				<Accordion.Item value={collection.name}>
-					<SingleCollection />
-				</Accordion.Item>
-			</PinnerCollectionCtx>
+			<div transition:slide>
+				<PinnerCollectionCtx data={collection}>
+					<Accordion.Item value={collection.name}>
+						<SingleCollection />
+					</Accordion.Item>
+				</PinnerCollectionCtx>
+			</div>
 		{/each}
 	</Accordion.Root>
 {:else}
