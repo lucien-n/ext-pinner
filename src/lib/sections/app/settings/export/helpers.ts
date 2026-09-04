@@ -2,9 +2,9 @@ import type { PinnerData } from '$lib/pinner-storage';
 import * as v from 'valibot';
 import { parsers } from './parsers';
 import { parserSchemas, type ExportSchema } from './schemas';
-import { PinnerParserType } from './types';
+import { ParserType } from './types';
 
-function parseWithParser<Parser extends PinnerParserType>(
+function parseWithParser<Parser extends ParserType>(
 	type: Parser,
 	data: unknown
 ): PinnerData | null {
@@ -15,7 +15,7 @@ function parseWithParser<Parser extends PinnerParserType>(
 }
 
 export function parsePinnerDataFromJSON(data: unknown): PinnerData | null {
-	for (const type of Object.values(PinnerParserType)) {
+	for (const type of Object.values(ParserType)) {
 		const result = parseWithParser(type, data);
 
 		if (result) return result;

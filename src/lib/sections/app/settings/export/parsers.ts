@@ -1,14 +1,14 @@
 import { LATEST_PINNER_SCHEMA_VERSION, type PinnerData } from '$lib/pinner-storage';
 import type { ExportSchema } from './schemas';
-import { PinnerParserType } from './types';
+import { ParserType } from './types';
 
 export const parsers: {
-	[Parser in PinnerParserType]: {
+	[Parser in ParserType]: {
 		fromJSON: (data: ExportSchema<Parser>) => PinnerData;
 		toJSON: (data: PinnerData) => ExportSchema<Parser>;
 	};
 } = {
-	[PinnerParserType.Pinner]: {
+	[ParserType.Pinner]: {
 		fromJSON: (data) => {
 			return {
 				autoloadId: data.autoloaded_id,
@@ -37,7 +37,7 @@ export const parsers: {
 			};
 		}
 	},
-	[PinnerParserType.SavePinnedTabs]: {
+	[ParserType.SavePinnedTabs]: {
 		fromJSON: (data) => {
 			let autoloadId = null;
 			for (const [id, collection] of Object.entries(data)) {

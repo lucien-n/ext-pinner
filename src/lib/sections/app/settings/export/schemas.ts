@@ -1,8 +1,8 @@
 import * as v from 'valibot';
-import { PinnerParserType } from './types';
+import { ParserType } from './types';
 
 export const parserSchemas = {
-	[PinnerParserType.Pinner]: v.object({
+	[ParserType.Pinner]: v.object({
 		autoloaded_id: v.nullable(v.string()),
 		collections: v.array(
 			v.object({
@@ -17,7 +17,7 @@ export const parserSchemas = {
 			})
 		)
 	}),
-	[PinnerParserType.SavePinnedTabs]: v.record(
+	[ParserType.SavePinnedTabs]: v.record(
 		v.string(),
 		v.object({
 			autoload: v.pipe(v.number(), v.values([0, 1])),
@@ -25,8 +25,6 @@ export const parserSchemas = {
 			tabs: v.array(v.pipe(v.string(), v.url()))
 		})
 	)
-} as const satisfies Record<PinnerParserType, v.GenericSchema>;
+} as const satisfies Record<ParserType, v.GenericSchema>;
 
-export type ExportSchema<Parser extends PinnerParserType> = v.InferOutput<
-	(typeof parserSchemas)[Parser]
->;
+export type ExportSchema<Parser extends ParserType> = v.InferOutput<(typeof parserSchemas)[Parser]>;
