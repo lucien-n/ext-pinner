@@ -26,13 +26,19 @@
 
 	let existingCollection = $derived(newCollectionName && pinner.getByName(newCollectionName));
 
+	let isSaving = $state(false);
+
 	async function handleSaveCollection() {
+		isSaving = true;
+
 		error = await pinner.save({
 			name: newCollectionName,
 			tabs: pinnedTabs.current.flatMap((tab) =>
 				tab.url ? { url: tab.url, isMuted: !!tab.mutedInfo?.muted } : []
 			)
 		});
+
+		isSaving = false;
 
 		if (!error) {
 			newCollectionName = '';
@@ -74,7 +80,7 @@
 		</Button>
 	</div>
 
-	{#if existingCollection}
+	{#if existingCollection && !isSaving}
 		<p class="text-sm font-semibold text-amber-500" transition:slide>
 			{m.large_sharp_myna_nail({ name: existingCollection.name })}
 		</p>
