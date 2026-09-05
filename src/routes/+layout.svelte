@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { dev } from '$app/environment';
 	import { installChromeMock } from '$lib/chrome-mock.js';
 	if (dev) installChromeMock();
 
-	import { dev } from '$app/environment';
 	import icon from '$lib/assets/favicon.svg';
 	import { initializePinner } from '$lib/hooks/usePinner.svelte';
 	import { useUi } from '$lib/hooks/useUi.svelte';

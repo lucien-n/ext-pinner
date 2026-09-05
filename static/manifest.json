@@ -18,5 +18,14 @@
 	"background": {
 		"service_worker": "background.js",
 		"type": "module"
+	},
+	"commands": {
+		"load-collection": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+L",
+				"mac": "Command+Shift+L"
+			},
+			"description": "Loads the associated collection"
+		}
 	}
 }
