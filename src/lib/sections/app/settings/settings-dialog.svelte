@@ -9,6 +9,7 @@
 	import { PARSER_TYPE_SPECS } from './export/specs';
 	import ImportCollectionsAction from './import-collections-action.svelte';
 	import LanguageSelect from './language-select.svelte';
+	import { APP_NAME } from '$lib/constants';
 
 	interface Props {
 		isOpen: boolean;
@@ -29,7 +30,7 @@
 	<Dialog.Content class="h-[90vh] max-h-[90vh]">
 		<Dialog.Header>
 			<Dialog.Title>{m.noble_east_crab_play()}</Dialog.Title>
-			<Dialog.Description>{m.plain_due_rat_enchant()}</Dialog.Description>
+			<Dialog.Description>{m.plain_due_rat_enchant({ APP_NAME })}</Dialog.Description>
 		</Dialog.Header>
 
 		<ScrollArea class="min-h-0 flex-1">

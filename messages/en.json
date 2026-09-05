@@ -9,13 +9,8 @@
 	"green_inclusive_bulldog_splash": "Collapse",
 	"good_active_horse_dial": [
 		{
-			"declarations": [
-				"input count",
-				"local countPlural = count: plural"
-			],
-			"selectors": [
-				"countPlural"
-			],
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
 			"match": {
 				"countPlural=zero": "No currently pinned tab",
 				"countPlural=one": "{count} currently pinned tab",
@@ -28,13 +23,8 @@
 	"level_best_tern_laugh": "Create Collection",
 	"misty_funny_jan_pause": [
 		{
-			"declarations": [
-				"input count",
-				"local countPlural = count: plural"
-			],
-			"selectors": [
-				"countPlural"
-			],
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
 			"match": {
 				"countPlural=zero": "Empty",
 				"countPlural=one": "{count} tab",
@@ -62,7 +52,7 @@
 	"major_legal_buzzard_zoom": "Invalid name",
 	"giant_kind_jay_nail": "Close",
 	"top_trite_shad_chop": "Language",
-	"plain_due_rat_enchant": "Manage Pinner settings.",
+	"plain_due_rat_enchant": "Manage {APP_NAME} settings.",
 	"noble_east_crab_play": "Settings",
 	"away_teary_capybara_surge": "Import collections",
 	"real_zany_toucan_flow": "Supports",

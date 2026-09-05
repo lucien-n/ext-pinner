@@ -2,6 +2,7 @@
 	import icon from '$lib/assets/favicon.svg';
 	import LinkPreview from '$lib/components/link-preview.svelte';
 	import ToggleModeButton from '$lib/components/toggle-mode-button.svelte';
+	import { APP_NAME } from '$lib/constants';
 	import { usePinnedTabs } from '$lib/hooks/usePinnedTabs.svelte';
 	import { useUi } from '$lib/hooks/useUi.svelte';
 	import icons from '$lib/icons';
@@ -20,8 +21,8 @@
 <Collapsible.Root class="flex flex-col gap-1" bind:open={isOpen}>
 	<div class="flex items-center justify-between">
 		<div class="flex items-center gap-2">
-			<img src={icon} alt="Pinner icon" class="w-4" />
-			<h1 class="text-lg font-semibold">Pinner</h1>
+			<img src={icon} alt="{APP_NAME} icon" class="w-4" />
+			<h1 class="text-lg font-semibold">{APP_NAME}</h1>
 		</div>
 
 		<div class="flex items-center gap-1">

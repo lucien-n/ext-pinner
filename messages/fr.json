@@ -9,13 +9,8 @@
 	"green_inclusive_bulldog_splash": "Réduire",
 	"good_active_horse_dial": [
 		{
-			"declarations": [
-				"input count",
-				"local countPlural = count: plural"
-			],
-			"selectors": [
-				"countPlural"
-			],
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
 			"match": {
 				"countPlural=one": "{count} onglet épinglé",
 				"countPlural=other": "{count} onglets épinglés"
@@ -27,13 +22,8 @@
 	"level_best_tern_laugh": "Créer une collection",
 	"misty_funny_jan_pause": [
 		{
-			"declarations": [
-				"input count",
-				"local countPlural = count: plural"
-			],
-			"selectors": [
-				"countPlural"
-			],
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
 			"match": {
 				"countPlural=zero": "Vide",
 				"countPlural=one": "{count} onglet",
@@ -61,7 +51,7 @@
 	"major_legal_buzzard_zoom": "Nom invalide",
 	"giant_kind_jay_nail": "Fermer",
 	"top_trite_shad_chop": "Langue",
-	"plain_due_rat_enchant": "Gérer les paramètres de Pinner.",
+	"plain_due_rat_enchant": "Gérer les paramètres de {APP_NAME}.",
 	"noble_east_crab_play": "Paramètres",
 	"away_teary_capybara_surge": "Importer des collections",
 	"real_zany_toucan_flow": "Compatible avec",
