@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.5] - 2026-09-XX
+
+### Changed
+
+- Use `kit-chrome-ext-adapter` which is a modified version of `sveltekit-chrome-extension-adapter`
+
 ## [1.1.4] - 2026-09-04
 
 ### Added

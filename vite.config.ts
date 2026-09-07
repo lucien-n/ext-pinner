@@ -1,7 +1,7 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
 import { sveltekit } from '@sveltejs/kit/vite';
 import tailwindcss from '@tailwindcss/vite';
-import adapter from './chrome-extension-adapter.js';
+import adapter from 'kit-chrome-ext-adapter';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
