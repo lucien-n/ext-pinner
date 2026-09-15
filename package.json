@@ -36,7 +36,7 @@
 		"eslint-plugin-svelte": "^3.19.0",
 		"formsnap": "^2.0.1",
 		"globals": "^17.6.0",
-		"kit-chrome-ext-adapter": "file:../kit-chrome-ext-adapter",
+		"kit-chrome-ext-adapter": "git+https://github.com/lucien-n/kit-chrome-ext-adapter",
 		"layerchart": "^2.0.0",
 		"mode-watcher": "^1.1.0",
 		"paneforge": "^1.0.2",

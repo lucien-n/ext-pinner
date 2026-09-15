@@ -32,7 +32,7 @@
         "eslint-plugin-svelte": "^3.19.0",
         "formsnap": "^2.0.1",
         "globals": "^17.6.0",
-        "kit-chrome-ext-adapter": "file:../kit-chrome-ext-adapter",
+        "kit-chrome-ext-adapter": "git+https://github.com/lucien-n/kit-chrome-ext-adapter",
         "layerchart": "^2.0.0",
         "mode-watcher": "^1.1.0",
         "paneforge": "^1.0.2",
@@ -296,8 +296,6 @@
 
     "@tailwindcss/vite": ["@tailwindcss/vite@4.3.3", "", { "dependencies": { "@tailwindcss/node": "4.3.3", "@tailwindcss/oxide": "4.3.3", "tailwindcss": "4.3.3" }, "peerDependencies": { "vite": "^5.2.0 || ^6 || ^7 || ^8" } }, "sha512-yYU8cogLeSh/ms2jh8Fj7jaba/EWa7Ja6GoUqYZaraEuCI5YS6ms6ObZgjjedm+jm6XZjdNRWBpPP6Z86oOxcw=="],
 
-    "@types/bun": ["@types/bun@1.4.1", "", { "dependencies": { "bun-types": "1.4.1" } }, "sha512-0AVGiTXGajf1rgKom3N+c5L7CBxuoyyv1i44M0nX4UDK0G/fnRAMiri93nHuVPIb429KKtAgj7HatVmmOjeQLA=="],
-
     "@types/chrome": ["@types/chrome@0.2.7", "", { "dependencies": { "@types/filesystem": "*", "@types/har-format": "*" } }, "sha512-9kjBozQ+jyDVt1eai3VZqjHDTN95JCuRmbRHOryOltBJmzrTmUw/9r/DznmjRaQ8WlyIfeCA4WNzoj0IvormJA=="],
 
     "@types/cookie": ["@types/cookie@0.6.0", "", {}, "sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA=="],
@@ -377,8 +375,6 @@
     "boolbase": ["boolbase@1.0.0", "", {}, "sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww=="],
 
     "brace-expansion": ["brace-expansion@5.0.9", "", { "dependencies": { "balanced-match": "^4.0.2" } }, "sha512-ScQ4IuvIEF1TMlP7Zt+vjJ//9zlPb2SDcxWxM3bk8s6t6GGdJ7KO1dCcTidOPJKePW30LE/2cT7wCyPho9/Wxg=="],
-
-    "bun-types": ["bun-types@1.4.1", "", { "dependencies": { "@types/node": "*" } }, "sha512-loKuVrAFZKfEv+JvWkHRS9GW5IqLuLRjVXN9p+vZvBN86O5hf/pBZQ5hSoyipsrMmWObZBDvWnlmKvjKTM0PdA=="],
 
     "camelcase": ["camelcase@8.0.0", "", {}, "sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA=="],
 
@@ -600,7 +596,7 @@
 
     "keyv": ["keyv@4.5.4", "", { "dependencies": { "json-buffer": "3.0.1" } }, "sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw=="],
 
-    "kit-chrome-ext-adapter": ["kit-chrome-ext-adapter@file:../kit-chrome-ext-adapter", { "dependencies": { "@sveltejs/adapter-static": "^3.0.10" }, "devDependencies": { "@types/bun": "latest", "@types/node": "^26.4.1", "cheerio": "^1.2.0", "sharp": "^0.35.4", "tiny-glob": "^0.2.9" }, "peerDependencies": { "@sveltejs/kit": "^2.70.3", "typescript": "^6" } }],
+    "kit-chrome-ext-adapter": ["kit-chrome-ext-adapter@github:lucien-n/kit-chrome-ext-adapter#e2f5863", { "dependencies": { "cheerio": "^1.2.0", "sharp": "^0.35.4", "tiny-glob": "^0.2.9" }, "peerDependencies": { "@sveltejs/adapter-static": "^3.0.1" } }, "lucien-n-kit-chrome-ext-adapter-e2f5863", "sha512-UayGtPSIOZ4uB0y7gzFmcw1TQjG73RIRQoWIvV179jr8TbcfbT/THCR2nvzNyMoBC02knNPgBW6sRhF35gukpA=="],
 
     "kleur": ["kleur@4.1.5", "", {}, "sha512-o+NO+8WrRiQEE4/7nwRJhN1HWpVmJm511pBHUxPLtp0BUISzlBplORYSmTclCnJvQq2tKu/sgl3xVpkc7ZWuQQ=="],
 
