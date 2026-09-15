@@ -11,7 +11,8 @@ export async function replacePinnedTabs(tabs: PinnerCollectionData['tabs']) {
 	for (const data of tabs) {
 		const tab = await chrome.tabs.create({
 			pinned: true,
-			url: data.url
+			url: data.url,
+			active: false
 		});
 
 		await chrome.tabs.update(tab.id, {

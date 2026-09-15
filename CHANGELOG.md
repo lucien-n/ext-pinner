@@ -6,6 +6,10 @@
 
 - Use `kit-chrome-ext-adapter` which is a modified version of `sveltekit-chrome-extension-adapter`
 
+### Fixed
+
+- Open tabs with `active` explicitly set to `false` fixes broken manual loading on macos
+
 ## [1.1.4] - 2026-09-04
 
 ### Added
