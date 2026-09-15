@@ -83,6 +83,7 @@
 
 _Initial release._
 
+[1.1.5]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.5
 [1.1.4]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.4
 [1.1.3]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.3
 [1.1.2]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.2
