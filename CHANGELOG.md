@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.6] - 2026-09-16
+
+### Fixed
+
+- Set `NODE_ENV` to `prod` in release CI
+
 ## [1.1.5] - 2026-09-15
 
 ### Changed
@@ -83,6 +89,7 @@
 
 _Initial release._
 
+[1.1.6]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.6
 [1.1.5]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.5
 [1.1.4]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.4
 [1.1.3]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.3
