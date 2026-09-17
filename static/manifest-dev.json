@@ -1,7 +1,7 @@
 {
 	"name": "[DEV] Pinner - Persisted pinned tabs",
 	"description": "Organize your pinned tabs into named collections. Save, restore,  automatically load, import and export them whenever you need.",
-	"version": "1.1.6",
+	"version": "1.1.7",
 	"manifest_version": 3,
 	"action": {
 		"default_popup": "index.html",
