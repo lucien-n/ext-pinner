@@ -27,8 +27,7 @@ const schemas = {
 				)
 			})
 		),
-		autoloadId: v.nullable(v.string()),
-		version: v.literal(0)
+		autoloadId: v.nullable(v.string())
 	}),
 
 	1: v.object({
