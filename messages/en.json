@@ -9,8 +9,13 @@
 	"green_inclusive_bulldog_splash": "Collapse",
 	"good_active_horse_dial": [
 		{
-			"declarations": ["input count", "local countPlural = count: plural"],
-			"selectors": ["countPlural"],
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
 			"match": {
 				"countPlural=zero": "No currently pinned tab",
 				"countPlural=one": "{count} currently pinned tab",
@@ -23,8 +28,13 @@
 	"level_best_tern_laugh": "Create Collection",
 	"misty_funny_jan_pause": [
 		{
-			"declarations": ["input count", "local countPlural = count: plural"],
-			"selectors": ["countPlural"],
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
 			"match": {
 				"countPlural=zero": "Empty",
 				"countPlural=one": "{count} tab",
@@ -63,5 +73,7 @@
 	"fair_last_marmot_surge": "Download",
 	"trite_spry_cowfish_pull": "Export",
 	"male_zippy_kudu_enrich": "Choose the export format",
-	"still_fluffy_meerkat_pat": "Appearance"
+	"still_fluffy_meerkat_pat": "Appearance",
+	"royal_ornate_cowfish_lend": "Disabled",
+	"dizzy_giant_manatee_spin": "This tab will not be loaded"
 }

@@ -9,8 +9,13 @@
 	"green_inclusive_bulldog_splash": "Réduire",
 	"good_active_horse_dial": [
 		{
-			"declarations": ["input count", "local countPlural = count: plural"],
-			"selectors": ["countPlural"],
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
 			"match": {
 				"countPlural=one": "{count} onglet épinglé",
 				"countPlural=other": "{count} onglets épinglés"
@@ -22,8 +27,13 @@
 	"level_best_tern_laugh": "Créer une collection",
 	"misty_funny_jan_pause": [
 		{
-			"declarations": ["input count", "local countPlural = count: plural"],
-			"selectors": ["countPlural"],
+			"declarations": [
+				"input count",
+				"local countPlural = count: plural"
+			],
+			"selectors": [
+				"countPlural"
+			],
 			"match": {
 				"countPlural=zero": "Vide",
 				"countPlural=one": "{count} onglet",
@@ -62,5 +72,7 @@
 	"fair_last_marmot_surge": "Télécharger",
 	"trite_spry_cowfish_pull": "Exporter les collections",
 	"male_zippy_kudu_enrich": "Choisissez le format de l'export",
-	"still_fluffy_meerkat_pat": "Apparence"
+	"still_fluffy_meerkat_pat": "Apparence",
+	"royal_ornate_cowfish_lend": "Désactiver",
+	"dizzy_giant_manatee_spin": "Cet onglet ne sera pas chargé"
 }

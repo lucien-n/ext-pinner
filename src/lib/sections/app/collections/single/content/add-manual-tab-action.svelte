@@ -4,6 +4,7 @@
 	import { cn } from '$lib/shadcn/utils.js';
 	import { Button } from '&/button';
 	import { Input } from '&/input';
+	import { nanoid } from 'nanoid';
 	import * as v from 'valibot';
 	import { urlSchema } from '../../schema';
 	import { getPinnerCollectionCtx } from '../pinner-collection.ctx.svelte.js';
@@ -29,7 +30,7 @@
 
 	function handleAddUrl() {
 		if (isAddShown && isNewTabUrlValid) {
-			ctx.add({ url: formattedNewTabUrl, isMuted: false });
+			ctx.add({ id: nanoid(), url: formattedNewTabUrl, isMuted: false, isDisabled: false });
 		} else {
 			newUrlInputRef?.focus();
 		}

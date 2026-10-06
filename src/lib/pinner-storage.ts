@@ -1,8 +1,9 @@
+import { nanoid } from 'nanoid';
 import * as v from 'valibot';
 
 const MIN_SCHEMA_VERSION = 0 as const;
 // todo: bump when adding a new schema version
-export const LATEST_PINNER_SCHEMA_VERSION = 1 as const;
+export const LATEST_PINNER_SCHEMA_VERSION = 2 as const;
 
 const versionField = v.pipe(
 	v.number(),
@@ -49,6 +50,29 @@ const schemas = {
 		),
 		autoloadId: v.nullable(v.string()),
 		version: v.literal(1)
+	}),
+
+	2: v.object({
+		collections: v.array(
+			v.object({
+				id: v.string(),
+				name: v.pipe(v.string(), v.minLength(2), v.maxLength(32)),
+				tabs: v.array(
+					v.object({
+						id: v.string(),
+						url: v.pipe(
+							v.string(),
+							v.url(),
+							v.transform((url) => url.trim().toLowerCase())
+						),
+						isMuted: v.boolean(),
+						isDisabled: v.boolean()
+					})
+				)
+			})
+		),
+		autoloadId: v.nullable(v.string()),
+		version: v.literal(2)
 	})
 } as const satisfies Record<number, v.GenericSchema>;
 
@@ -63,40 +87,48 @@ export type PinnerData = SchemaOutputMap[typeof LATEST_PINNER_SCHEMA_VERSION];
 export const pinnerSchema = schemas[LATEST_PINNER_SCHEMA_VERSION];
 
 const nextVersionMap = {
-	0: 1
+	0: 1,
+	1: 2
 } as const satisfies Record<
 	Exclude<SchemaVersions, typeof LATEST_PINNER_SCHEMA_VERSION>,
 	SchemaVersions
 >;
 type NextVersionMap = typeof nextVersionMap;
 
-type Migration<From extends keyof NextVersionMap> = {
-	up: (data: SchemaOutputMap[From]) => SchemaOutputMap[NextVersionMap[From]];
-};
+type Migration<From extends keyof NextVersionMap> = (
+	data: SchemaOutputMap[From]
+) => SchemaOutputMap[NextVersionMap[From]];
 
 export const schemasMigrations: {
 	[Version in keyof NextVersionMap]: Migration<Version>;
 } = {
-	0: {
-		up: (data) => ({
-			...data,
-			collections: data.collections.map((collection) => ({
-				id: collection.id,
-				name: collection.name,
-				tabs: collection.urls.map((url) => ({
-					url,
-					isMuted: false
-				}))
-			})),
-			version: 1
-		})
-	}
+	0: (data) => ({
+		...data,
+		collections: data.collections.map((collection) => ({
+			id: collection.id,
+			name: collection.name,
+			tabs: collection.urls.map((url) => ({
+				url,
+				isMuted: false
+			}))
+		})),
+		version: 1
+	}),
+	1: (data) => ({
+		...data,
+		collections: data.collections.map((collection) => ({
+			id: collection.id,
+			name: collection.name,
+			tabs: collection.tabs.map((tab) => ({ ...tab, id: nanoid(), isDisabled: false }))
+		})),
+		version: 2
+	})
 };
 
 export const INIT_PINNER_DATA: PinnerData = {
 	autoloadId: null,
 	collections: [],
-	version: 1
+	version: 2
 };
 
 const KEY = 'data';
@@ -123,6 +155,13 @@ async function backupAndResetData(data: unknown): Promise<void> {
 	await chrome.storage.local.set({ [BACKUP_KEY]: data });
 }
 
+function migrate<Version extends keyof NextVersionMap>(
+	version: Version,
+	data: SchemaOutputMap[Version]
+): SchemaOutputMap[NextVersionMap[Version]] {
+	return schemasMigrations[version](data);
+}
+
 export async function loadPinnerData(): Promise<PinnerData | undefined> {
 	const stored = await chrome.storage.local.get(KEY);
 	const storedData = stored[KEY];
@@ -146,7 +185,7 @@ export async function loadPinnerData(): Promise<PinnerData | undefined> {
 			return undefined;
 		}
 
-		data = schemasMigrations[migratableVersion].up(parsed.output);
+		data = migrate(migratableVersion, parsed.output);
 		version = nextVersionMap[migratableVersion];
 	}
 

@@ -20,7 +20,7 @@
 
 	let shouldShowFullUrls = $state(false);
 
-	let items = $derived(ctx.data.tabs.map((tab) => ({ ...tab, id: tab.url })));
+	let items = $derived(ctx.data.tabs);
 
 	function handleDndConsider(e: CustomEvent<DndEvent<TypeDataWithDndId>>) {
 		items = e.detail.items;
@@ -63,7 +63,15 @@
 		>
 			{#each items as item (item.id)}
 				<div class="flex min-w-0 items-center justify-between" transition:slide>
-					<div class="flex items-center gap-1">
+					<div
+						class="flex items-center gap-1"
+						class:line-through={item.isDisabled}
+						class:text-muted-foreground={item.isDisabled}
+					>
+						<div use:dragHandle class="cursor-grab active:cursor-grabbing">
+							<icons.global.drag class="size-4 text-muted-foreground" />
+						</div>
+
 						<LinkPreview
 							url={new SvelteURL(item.url)}
 							variant={shouldShowFullUrls ? 'full' : 'short'}
@@ -72,11 +80,20 @@
 
 					<div class="flex shrink-0 items-center gap-1">
 						<ButtonGroup.Root>
+							<Label
+								class={buttonVariants({ size: 'sm', variant: 'ghost' })}
+								title={m.dizzy_giant_manatee_spin()}
+							>
+								{m.royal_ornate_cowfish_lend()}
+								<Checkbox
+									bind:checked={() => item.isDisabled, () => ctx.toggleIsDisabled(item.id)}
+								/>
+							</Label>
 							<Button
 								size="icon-sm"
 								variant="ghost"
 								title={item.isMuted ? m.bland_level_crocodile_mix() : m.only_moving_samuel_harbor()}
-								onclick={() => ctx.toggleIsMuted(item.url)}
+								onclick={() => ctx.toggleIsMuted(item.id)}
 							>
 								{#if item.isMuted}
 									<icons.global.deaphened />
@@ -88,15 +105,11 @@
 								size="icon-sm"
 								variant="ghost"
 								title={m.busy_quaint_monkey_clip()}
-								onclick={() => ctx.remove(item.url)}
+								onclick={() => ctx.remove(item.id)}
 							>
-								<icons.global.remove />
+								<icons.global.delete />
 							</Button>
 						</ButtonGroup.Root>
-
-						<div use:dragHandle class="cursor-grab active:cursor-grabbing">
-							<icons.global.drag class="size-4 text-muted-foreground" />
-						</div>
 					</div>
 				</div>
 			{/each}

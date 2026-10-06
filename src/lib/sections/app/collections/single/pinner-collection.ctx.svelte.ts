@@ -37,8 +37,8 @@ class PinnerCollectionCtx {
 	}
 
 	// todo: what do we do when we remove the last url of a collection ? (delete ?)
-	remove(url: string) {
-		this.data.tabs = this.data.tabs.filter((tab) => tab.url !== url);
+	remove(id: string) {
+		this.data.tabs = this.data.tabs.filter((tab) => tab.id !== id);
 
 		this.save();
 	}
@@ -49,11 +49,20 @@ class PinnerCollectionCtx {
 		this.save();
 	}
 
-	toggleIsMuted(url: string) {
-		const tab = this.data.tabs.find((tab) => tab.url === url);
+	toggleIsMuted(id: string) {
+		const tab = this.data.tabs.find((tab) => tab.id === id);
 		if (!tab) return;
 
 		tab.isMuted = !tab.isMuted;
+
+		this.save();
+	}
+
+	toggleIsDisabled(id: string) {
+		const tab = this.data.tabs.find((tab) => tab.id === id);
+		if (!tab) return;
+
+		tab.isDisabled = !tab.isDisabled;
 
 		this.save();
 	}

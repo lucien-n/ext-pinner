@@ -22,7 +22,7 @@
 	variant="link"
 	href={url.href}
 	target="_blank"
-	class="mt-2 block min-w-0 flex-1 overflow-hidden px-0 py-0 text-left font-normal text-ellipsis whitespace-nowrap"
+	class="mt-2 block min-w-0 flex-1 overflow-hidden px-0 py-0 text-left font-normal text-ellipsis whitespace-nowrap text-inherit"
 	onclick={onClick}
 >
 	{#if variant === 'full'}

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.8] - 2026-10-06
+
+### Added
+
+- Bumped schema version with new isDisabled and id tab fields
+- Disable tabs so they're not (auto)loaded
+
 ## [1.1.7] - 2026-09-17
 
 ### Fixed
@@ -95,6 +102,7 @@
 
 _Initial release._
 
+[1.1.8]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.8
 [1.1.7]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.7
 [1.1.6]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.6
 [1.1.5]: https://github.com/lucien-n/ext-pinner/releases/tag/v1.1.5
