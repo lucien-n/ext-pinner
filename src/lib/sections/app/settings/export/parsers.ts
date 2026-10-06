@@ -1,4 +1,5 @@
 import { type PinnerData } from '$lib/pinner-storage';
+import { nanoid } from 'nanoid';
 import type { ParserSchema } from './schemas';
 import { ParserType } from './types';
 
@@ -16,8 +17,10 @@ export const parsers: {
 					id: c.id,
 					name: c.name,
 					tabs: c.tabs.map((t) => ({
+						id: nanoid(),
 						url: t.url,
-						isMuted: t.is_muted
+						isMuted: t.is_muted,
+						isDisabled: t.is_disabled
 					}))
 				}))
 			};
@@ -30,7 +33,8 @@ export const parsers: {
 					name: c.name,
 					tabs: c.tabs.map((t) => ({
 						url: t.url,
-						is_muted: t.isMuted
+						is_muted: t.isMuted,
+						is_disabled: t.isDisabled
 					}))
 				}))
 			};
@@ -51,8 +55,10 @@ export const parsers: {
 					id,
 					name: c.set_name,
 					tabs: c.tabs.map((url) => ({
+						id: nanoid(),
 						url,
-						isMuted: false
+						isMuted: false,
+						isDisabled: false
 					}))
 				}))
 			};

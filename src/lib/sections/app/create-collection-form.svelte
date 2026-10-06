@@ -6,6 +6,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { Button } from '&/button';
 	import { Input } from '&/input';
+	import { nanoid } from 'nanoid';
 	import { slide } from 'svelte/transition';
 
 	const pinner = usePinner();
@@ -33,9 +34,12 @@
 
 		error = await pinner.save({
 			name: newCollectionName,
-			tabs: pinnedTabs.current.flatMap((tab) =>
-				tab.url ? { url: tab.url, isMuted: !!tab.mutedInfo?.muted } : []
-			)
+			tabs: pinnedTabs.current.map((tab) => ({
+				id: nanoid(),
+				url: tab.url,
+				isMuted: !!tab.mutedInfo?.muted,
+				isDisabled: false
+			}))
 		});
 
 		isSaving = false;

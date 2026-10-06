@@ -11,7 +11,8 @@ export const parserSchemas = {
 				tabs: v.array(
 					v.object({
 						url: v.pipe(v.string(), v.url()),
-						is_muted: v.optional(v.boolean(), false)
+						is_muted: v.optional(v.boolean(), false),
+						is_disabled: v.optional(v.boolean(), false)
 					})
 				)
 			})
